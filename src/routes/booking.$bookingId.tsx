@@ -363,7 +363,7 @@ function ShareCard({
   departure: string;
   bookingId: string;
 }) {
-  const origin = typeof window !== "undefined" ? window.location.origin : "https://no-pay-routes.lovable.app";
+  const origin = typeof window !== "undefined" ? window.location.origin : "https://north-go-route.lovable.app";
   const tripLink = `${origin}/book/${tripId}?promo=FRIEND50&ref=${bookingId.slice(0, 8)}`;
   const shareText = `I just booked ${tripRoute} on NorthGo for ${formatDateTime(departure)}. Use code FRIEND50 for KES 50 off your first ride: ${tripLink}`;
 

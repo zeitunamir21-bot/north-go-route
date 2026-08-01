@@ -10,4 +10,4 @@ Disallow: /driver/signup
 Disallow: /reset-password
 Disallow: /forgot-password
 
-Sitemap: https://no-pay-routes.lovable.app/sitemap.xml
+Sitemap: https://north-go-route.lovable.app/sitemap.xml

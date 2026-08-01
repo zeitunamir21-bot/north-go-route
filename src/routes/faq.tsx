@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { BottomNav } from "@/components/BottomNav";
 import { FAQ } from "@/components/FAQ";
 
-const URL = "https://no-pay-routes.lovable.app/faq";
+const URL = "https://north-go-route.lovable.app/faq";
 
 const faqEntries = [
   {

@@ -9,7 +9,7 @@ import { TripCard } from "@/components/TripCard";
 import { TrustBadges } from "@/components/TrustBadges";
 import { Button } from "@/components/ui/button";
 
-const URL = "https://no-pay-routes.lovable.app/nairobi-to-isiolo";
+const URL = "https://north-go-route.lovable.app/nairobi-to-isiolo";
 
 export const Route = createFileRoute("/nairobi-to-isiolo")({
   head: () => ({

@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Reserve your seat for daily intercity rides between Isiolo and Nairobi. No upfront payment. Pay on board." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504" },
-      { name: "theme-color", content: "#DC2626" },
+      { name: "theme-color", content: "#16A34A" },
       { name: "google-site-verification", content: "YQoSGNSS0iD5ttKMMchWr0B0ZrVUlkDvkGJsdetT3Ek" },
 
       { name: "apple-mobile-web-app-capable", content: "yes" },
@@ -125,10 +125,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://no-pay-routes.lovable.app/#organization",
+              "@id": "https://north-go-route.lovable.app/#organization",
               name: "NorthGo",
-              url: "https://no-pay-routes.lovable.app",
-              logo: "https://no-pay-routes.lovable.app/icon-512.png",
+              url: "https://north-go-route.lovable.app",
+              logo: "https://north-go-route.lovable.app/icon-512.png",
               description: "Daily 7-seater Sienta rides between Isiolo and Nairobi with verified Kenyan drivers. Reserve online, pay on board.",
               areaServed: { "@type": "Country", name: "Kenya" },
               contactPoint: {
@@ -141,13 +141,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             {
               "@type": "WebSite",
-              "@id": "https://no-pay-routes.lovable.app/#website",
-              url: "https://no-pay-routes.lovable.app",
+              "@id": "https://north-go-route.lovable.app/#website",
+              url: "https://north-go-route.lovable.app",
               name: "NorthGo",
-              publisher: { "@id": "https://no-pay-routes.lovable.app/#organization" },
+              publisher: { "@id": "https://north-go-route.lovable.app/#organization" },
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://no-pay-routes.lovable.app/trips?q={search_term_string}",
+                target: "https://north-go-route.lovable.app/trips?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             },

@@ -111,3 +111,14 @@
   from { transform: scaleX(1); }
   to { transform: scaleX(0); }
 }
+
+@keyframes drive {
+  0% { transform: translateX(-40vw); }
+  60% { transform: translateX(38vw); }
+  100% { transform: translateX(110vw); }
+}
+
+@keyframes roadmove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-56px); }
+}

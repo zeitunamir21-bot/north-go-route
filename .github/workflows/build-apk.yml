@@ -37,7 +37,7 @@ jobs:
           if [ ! -f capacitor-shell/index.html ]; then
             cat > capacitor-shell/index.html <<'HTML'
           <!doctype html><html><head><meta charset="utf-8"><title>NorthGo</title></head>
-          <body><script>location.replace("https://no-pay-routes.lovable.app");</script></body></html>
+          <body><script>location.replace("https://north-go-route.lovable.app");</script></body></html>
           HTML
           fi
           ls -la capacitor-shell
@@ -49,8 +49,22 @@ jobs:
             @capacitor/cli@6 @capacitor/core@6 @capacitor/android@6 \
             typescript@5 @types/node@20
 
+      - name: Generate App Icons and Splash
+        run: |
+          mkdir -p assets
+          cp public/icon-512.png assets/icon.png
+          cp public/icon-512.png assets/splash.png
+          npx @capacitor/assets@3 generate --android \
+            --iconBackgroundColor '#16A34A' \
+            --splashBackgroundColor '#16A34A' || echo "asset generation skipped"
+
       - name: Add Android Platform
-        run: npx cap add android || echo "android already exists"
+        run: |
+          rm -rf android
+          npx cap add android
+
+      - name: Apply Icons to Android
+        run: npx @capacitor/assets@3 generate --android --iconBackgroundColor '#16A34A' --splashBackgroundColor '#16A34A' || echo "asset generation skipped"
 
       - name: Sync Android
         run: npx cap sync android

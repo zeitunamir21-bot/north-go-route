@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { BottomNav } from "@/components/BottomNav";
 import { ContactSupport } from "@/components/ContactSupport";
 
-const URL = "https://no-pay-routes.lovable.app/contact";
+const URL = "https://north-go-route.lovable.app/contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
