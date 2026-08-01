@@ -439,7 +439,72 @@ function TripForm({
   );
 }
 
+function ProfilePicture({ driver, onChanged }: { driver: Driver; onChanged: () => void }) {
+  const [busy, setBusy] = useState(false);
+  const photos = driver.photos ?? [];
+  const avatar = photos[0];
+
+  async function onPick(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    if (!file.type.startsWith("image/")) return toast.error("Please choose an image file.");
+    if (file.size > 5 * 1024 * 1024) return toast.error("Image must be smaller than 5MB.");
+    setBusy(true);
+    try {
+      const ext = file.name.split(".").pop() || "jpg";
+      const path = `${driver.user_id}/avatar-${Date.now()}.${ext}`;
+      const { error: upErr } = await supabase.storage
+        .from("driver-photos")
+        .upload(path, file, { contentType: file.type, upsert: false });
+      if (upErr) throw new Error(upErr.message);
+      // photos[0] is the profile picture everywhere in the app
+      const next = [path, ...photos.filter((p) => p !== path)].slice(0, 6);
+      const { error } = await supabase.from("drivers").update({ photos: next }).eq("id", driver.id);
+      if (error) throw new Error(error.message);
+      toast.success("Profile picture updated");
+      onChanged();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <section className="mt-8 rounded-2xl border border-border bg-card p-6">
+      <h2 className="font-display text-xl font-bold">Profile picture</h2>
+      <p className="text-sm text-muted-foreground">
+        This photo appears on your public profile and on every trip you post.
+      </p>
+      <div className="mt-4 flex items-center gap-5">
+        <div className="h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border bg-muted">
+          {avatar ? (
+            <DriverPhoto src={avatar} alt={driver.full_name} className="h-full w-full object-cover" />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-2xl font-bold text-muted-foreground">
+              {driver.full_name.charAt(0).toUpperCase()}
+            </div>
+          )}
+        </div>
+        <label className="cursor-pointer">
+          <input type="file" accept="image/*" className="hidden" disabled={busy} onChange={onPick} />
+          <span
+            className={`inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-semibold ${
+              busy ? "opacity-50" : "hover:bg-muted"
+            }`}
+          >
+            {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <ImagePlus className="h-4 w-4" />}
+            {avatar ? "Change picture" : "Upload picture"}
+          </span>
+        </label>
+      </div>
+    </section>
+  );
+}
+
 function PhotoSection({ driver, onChanged }: { driver: Driver; onChanged: () => void }) {
+
   const [busy, setBusy] = useState(false);
   const photos = driver.photos ?? [];
 
