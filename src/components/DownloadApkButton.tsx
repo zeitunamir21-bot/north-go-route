@@ -28,7 +28,10 @@ export function DownloadApkButton({
     return (
       <a
         href={APK_URL}
-        download
+        // Cross-origin downloads ignore the `download` attribute, and embedded
+        // preview iframes block same-tab downloads — open in a new tab instead.
+        target="_blank"
+        rel="noopener noreferrer"
         className={`${base} ${styles} ${className}`}
         aria-label="Download the NorthGo Android app"
       >
