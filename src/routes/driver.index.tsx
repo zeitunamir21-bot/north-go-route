@@ -603,9 +603,23 @@ function PhotoSection({ driver, onChanged }: { driver: Driver; onChanged: () => 
         </div>
       ) : (
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-          {photos.map((url) => (
+          {photos.map((url, i) => (
             <div key={url} className="group relative aspect-square overflow-hidden rounded-xl border border-border">
               <DriverPhoto src={url} alt="Driver vehicle" className="h-full w-full object-cover" />
+              {i === 0 ? (
+                <span className="absolute bottom-1.5 left-1.5 rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground">
+                  Profile
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => makeProfile(url)}
+                  className="absolute bottom-1.5 left-1.5 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-semibold text-white opacity-0 transition group-hover:opacity-100"
+                >
+                  Set as profile
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => removePhoto(url)}
@@ -616,6 +630,7 @@ function PhotoSection({ driver, onChanged }: { driver: Driver; onChanged: () => 
               </button>
             </div>
           ))}
+
         </div>
       )}
     </section>
