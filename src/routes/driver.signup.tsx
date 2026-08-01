@@ -59,14 +59,9 @@ function DriverSignup() {
       vehicle_name: form.vehicle_name.trim(),
     });
     if (insErr) throw new Error(insErr.message);
-    // Fire-and-forget WhatsApp notification to admin
-    notifyDriverApplication({
-      data: {
-        driverName: form.full_name.trim(),
-        phone: form.phone.trim(),
-        vehicle: form.vehicle_name.trim(),
-      },
-    }).catch((err) => console.warn("WhatsApp notify failed", err));
+    // Fire-and-forget WhatsApp notification to admin (details read server-side)
+    notifyDriverApplication().catch((err) => console.warn("WhatsApp notify failed", err));
+
   }
 
   async function onSubmit(e: React.FormEvent) {
