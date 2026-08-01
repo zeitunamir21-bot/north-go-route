@@ -546,6 +546,22 @@ function PhotoSection({ driver, onChanged }: { driver: Driver; onChanged: () => 
     }
   }
 
+  async function makeProfile(url: string) {
+    setBusy(true);
+    try {
+      const next = [url, ...photos.filter((p) => p !== url)];
+      const { error } = await supabase.from("drivers").update({ photos: next }).eq("id", driver.id);
+      if (error) throw new Error(error.message);
+      toast.success("Profile picture updated");
+      onChanged();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Could not update");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+
   async function removePhoto(url: string) {
     if (!confirm("Remove this photo?")) return;
     setBusy(true);
