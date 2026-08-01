@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { ArrowRight, Check, Clock, ShieldCheck, Wallet } from "lucide-react";
+import { ArrowRight, Car, Check, Clock, ShieldCheck, Wallet } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
@@ -213,7 +213,51 @@ function Home() {
 
       <ReviewsSection />
       <FAQ />
+
+      {/* DRIVER SIGNUP */}
+      <section className="mx-auto max-w-6xl px-4 pb-4">
+        <div className="rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-card)] md:p-12">
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-xl">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                <Car className="h-3.5 w-3.5" /> Drive with NorthGo
+              </span>
+              <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+                Own a 7-seater? Fill your seats on every trip.
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                Sign up free, add your profile picture, vehicle and plate number, then post your own
+                Isiolo ↔ Nairobi departure times. Passengers book your seats directly — you keep the fare.
+              </p>
+              <ul className="mt-5 grid gap-2 text-sm sm:grid-cols-2">
+                {[
+                  "Free to join, no commission",
+                  "Post and edit your own trips",
+                  "Profile photo, ratings & reviews",
+                  "Instant WhatsApp booking alerts",
+                ].map((b) => (
+                  <li key={b} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 shrink-0 text-primary" /> {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex w-full flex-col gap-3 md:w-auto">
+              <Button asChild size="lg" className="h-13 rounded-xl px-8 text-base font-semibold">
+                <Link to="/driver/signup">
+                  Become a driver <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-xl">
+                <Link to="/driver/login">Driver sign in</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <ContactSupport />
+
 
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 pb-24">
