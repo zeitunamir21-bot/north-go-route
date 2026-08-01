@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Reserve your seat for daily intercity rides between Isiolo and Nairobi. No upfront payment. Pay on board." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504" },
-      { name: "theme-color", content: "#DC2626" },
+      { name: "theme-color", content: "#16A34A" },
       { name: "google-site-verification", content: "YQoSGNSS0iD5ttKMMchWr0B0ZrVUlkDvkGJsdetT3Ek" },
 
       { name: "apple-mobile-web-app-capable", content: "yes" },
