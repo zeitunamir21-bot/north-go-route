@@ -1,11 +1,11 @@
 {
   "name": "NorthGo",
   "short_name": "NorthGo",
-  "description": "Reserve your seat for daily intercity rides between Isiolo and Nairobi. No upfront payment. Pay on board.",
+  "description": "Book your Isiolo \u21c4 Nairobi seat in a 7-seater Sienta. Reserve online, pay on board.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#DC2626",
-  "theme_color": "#DC2626",
+  "background_color": "#16A34A",
+  "theme_color": "#16A34A",
   "orientation": "portrait",
   "scope": "/",
   "lang": "en",
@@ -36,7 +36,11 @@
       "purpose": "any"
     }
   ],
-  "categories": ["travel", "transportation", "navigation"],
+  "categories": [
+    "travel",
+    "transportation",
+    "navigation"
+  ],
   "screenshots": [
     {
       "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504",
@@ -52,7 +56,12 @@
       "short_name": "Trips",
       "description": "Browse upcoming trips",
       "url": "/trips",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
