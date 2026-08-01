@@ -19,7 +19,7 @@ export const notifyDriverApplication = createServerFn({ method: "POST" })
       console.warn("CALLMEBOT_API_KEY not configured; skipping WhatsApp notification");
       return { sent: false, reason: "no_api_key" };
     }
-    const text = `🚐 New NorthGo driver application\nName: ${data.driverName}\nPhone: ${data.phone}\nVehicle: ${data.vehicle}\nReview: https://no-pay-routes.lovable.app/admin`;
+    const text = `🚐 New NorthGo driver application\nName: ${data.driverName}\nPhone: ${data.phone}\nVehicle: ${data.vehicle}\nReview: https://north-go-route.lovable.app/admin`;
     const url = `https://api.callmebot.com/whatsapp.php?phone=${ADMIN_WHATSAPP}&text=${encodeURIComponent(text)}&apikey=${apiKey}`;
     try {
       const res = await fetch(url, { method: "GET" });

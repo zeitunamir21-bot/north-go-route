@@ -20,7 +20,7 @@ import { DownloadApkButton } from "@/components/DownloadApkButton";
 
 import heroImg from "@/assets/hero-van.jpg";
 
-const HOME_URL = "https://no-pay-routes.lovable.app/";
+const HOME_URL = "https://north-go-route.lovable.app/";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,8 +50,8 @@ export const Route = createFileRoute("/")({
           name: "NorthGo — Isiolo ⇄ Nairobi 7-Seater Sienta Booking in Kenya",
           url: HOME_URL,
           description: "Book your Isiolo ⇄ Nairobi seat online. Daily 7-seater Sienta trips, verified Kenyan drivers, pay on board.",
-          isPartOf: { "@id": "https://no-pay-routes.lovable.app/#website" },
-          about: { "@id": "https://no-pay-routes.lovable.app/#organization" },
+          isPartOf: { "@id": "https://north-go-route.lovable.app/#website" },
+          about: { "@id": "https://north-go-route.lovable.app/#organization" },
           primaryImageOfPage: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504",
         }),
       },

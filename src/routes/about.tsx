@@ -7,7 +7,7 @@ import { TrustBadges } from "@/components/TrustBadges";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Heart, Users, Compass } from "lucide-react";
 
-const URL = "https://no-pay-routes.lovable.app/about";
+const URL = "https://north-go-route.lovable.app/about";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

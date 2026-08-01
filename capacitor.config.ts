@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: "NorthGo",
   webDir: "capacitor-shell",
   server: {
-    url: "https://no-pay-routes.lovable.app",
+    url: "https://north-go-route.lovable.app",
     androidScheme: "https",
     cleartext: false,
   },

@@ -8,7 +8,7 @@ import { TripCard } from "@/components/TripCard";
 import { formatDay } from "@/lib/format";
 import { BottomNav } from "@/components/BottomNav";
 
-const TRIPS_URL = "https://no-pay-routes.lovable.app/trips";
+const TRIPS_URL = "https://north-go-route.lovable.app/trips";
 
 export const Route = createFileRoute("/trips")({
   head: () => ({

@@ -125,10 +125,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://no-pay-routes.lovable.app/#organization",
+              "@id": "https://north-go-route.lovable.app/#organization",
               name: "NorthGo",
-              url: "https://no-pay-routes.lovable.app",
-              logo: "https://no-pay-routes.lovable.app/icon-512.png",
+              url: "https://north-go-route.lovable.app",
+              logo: "https://north-go-route.lovable.app/icon-512.png",
               description: "Daily 7-seater Sienta rides between Isiolo and Nairobi with verified Kenyan drivers. Reserve online, pay on board.",
               areaServed: { "@type": "Country", name: "Kenya" },
               contactPoint: {
@@ -141,13 +141,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             {
               "@type": "WebSite",
-              "@id": "https://no-pay-routes.lovable.app/#website",
-              url: "https://no-pay-routes.lovable.app",
+              "@id": "https://north-go-route.lovable.app/#website",
+              url: "https://north-go-route.lovable.app",
               name: "NorthGo",
-              publisher: { "@id": "https://no-pay-routes.lovable.app/#organization" },
+              publisher: { "@id": "https://north-go-route.lovable.app/#organization" },
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://no-pay-routes.lovable.app/trips?q={search_term_string}",
+                target: "https://north-go-route.lovable.app/trips?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             },

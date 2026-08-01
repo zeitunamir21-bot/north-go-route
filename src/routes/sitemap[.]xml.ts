@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://no-pay-routes.lovable.app";
+const BASE_URL = "https://north-go-route.lovable.app";
 
 interface SitemapEntry {
   path: string;

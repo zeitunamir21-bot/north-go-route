@@ -37,7 +37,7 @@ jobs:
           if [ ! -f capacitor-shell/index.html ]; then
             cat > capacitor-shell/index.html <<'HTML'
           <!doctype html><html><head><meta charset="utf-8"><title>NorthGo</title></head>
-          <body><script>location.replace("https://no-pay-routes.lovable.app");</script></body></html>
+          <body><script>location.replace("https://north-go-route.lovable.app");</script></body></html>
           HTML
           fi
           ls -la capacitor-shell
