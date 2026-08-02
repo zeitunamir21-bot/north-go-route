@@ -38,7 +38,9 @@ export function Header() {
         <nav className="hidden items-center gap-1 text-sm font-medium md:flex">
           <NavLink to="/" exact>Home</NavLink>
           <NavLink to="/trips">Trips</NavLink>
+          <NavLink to="/drivers">Drivers</NavLink>
           <NavLink to="/my-bookings">My Bookings</NavLink>
+
           <NavLink to="/driver">Driver</NavLink>
           <NavLink to="/admin">Admin</NavLink>
         </nav>
@@ -74,7 +76,7 @@ function NavLink({
   exact,
   children,
 }: {
-  to: "/" | "/trips" | "/my-bookings" | "/driver" | "/admin";
+  to: "/" | "/trips" | "/drivers" | "/my-bookings" | "/driver" | "/admin";
   exact?: boolean;
   children: React.ReactNode;
 }) {

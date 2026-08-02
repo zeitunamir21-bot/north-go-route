@@ -76,39 +76,57 @@ export type Database = {
       drivers: {
         Row: {
           approved_at: string | null
+          bio: string | null
           created_at: string
+          experience_years: number | null
           full_name: string
           id: string
+          languages: string[]
           phone: string
           photos: string[]
           plate_number: string | null
+          seat_capacity: number
           status: string
           user_id: string
+          vehicle_color: string | null
           vehicle_name: string
+          vehicle_year: number | null
         }
         Insert: {
           approved_at?: string | null
+          bio?: string | null
           created_at?: string
+          experience_years?: number | null
           full_name: string
           id?: string
+          languages?: string[]
           phone: string
           photos?: string[]
           plate_number?: string | null
+          seat_capacity?: number
           status?: string
           user_id: string
+          vehicle_color?: string | null
           vehicle_name?: string
+          vehicle_year?: number | null
         }
         Update: {
           approved_at?: string | null
+          bio?: string | null
           created_at?: string
+          experience_years?: number | null
           full_name?: string
           id?: string
+          languages?: string[]
           phone?: string
           photos?: string[]
           plate_number?: string | null
+          seat_capacity?: number
           status?: string
           user_id?: string
+          vehicle_color?: string | null
           vehicle_name?: string
+          vehicle_year?: number | null
         }
         Relationships: []
       }
@@ -327,6 +345,7 @@ export type Database = {
         Returns: boolean
       }
       is_approved_driver: { Args: { _user_id: string }; Returns: boolean }
+      list_drivers_public: { Args: never; Returns: Json }
       list_upcoming_trips_public: { Args: never; Returns: Json }
       mask_name: { Args: { p_name: string }; Returns: string }
       redeem_promo: { Args: { p_code: string }; Returns: undefined }
