@@ -38,7 +38,9 @@ export function Header() {
         <nav className="hidden items-center gap-1 text-sm font-medium md:flex">
           <NavLink to="/" exact>Home</NavLink>
           <NavLink to="/trips">Trips</NavLink>
+          <NavLink to="/drivers">Drivers</NavLink>
           <NavLink to="/my-bookings">My Bookings</NavLink>
+
           <NavLink to="/driver">Driver</NavLink>
           <NavLink to="/admin">Admin</NavLink>
         </nav>
