@@ -96,8 +96,10 @@ export function DriverCard({ driver }: { driver: PublicDriver }) {
               <Clock className="h-3.5 w-3.5" /> {years} yr{years > 1 ? "s" : ""} experience
             </span>
             <span className="inline-flex items-center gap-1">
-              <Car className="h-3.5 w-3.5" /> {driver.completed_trips ?? 0} trips
+              <Car className="h-3.5 w-3.5" /> {driver.completed_trips ?? 0} trip
+              {(driver.completed_trips ?? 0) === 1 ? "" : "s"}
             </span>
+
           </div>
         </div>
       </div>
