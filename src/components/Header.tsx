@@ -76,7 +76,7 @@ function NavLink({
   exact,
   children,
 }: {
-  to: "/" | "/trips" | "/my-bookings" | "/driver" | "/admin";
+  to: "/" | "/trips" | "/drivers" | "/my-bookings" | "/driver" | "/admin";
   exact?: boolean;
   children: React.ReactNode;
 }) {
