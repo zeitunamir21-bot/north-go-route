@@ -197,11 +197,15 @@ function RootComponent() {
   useAppChrome();
 
   useEffect(() => {
+    // Splash plays once per app session, not on every internal reload.
+    if (sessionStorage.getItem("northgo.splash-seen")) setShowSplash(false);
+    else sessionStorage.setItem("northgo.splash-seen", "1");
     registerServiceWorker();
     hideNativeSplash();
     const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
     syncStatusBar(theme);
   }, []);
+
 
   // Android hardware back button: walk the router history, minimise at root.
   const onBack = useCallback(() => {
