@@ -15,6 +15,7 @@ import { SeatPicker } from "@/components/SeatPicker";
 import { StarRating } from "@/components/StarRating";
 import { toast } from "sonner";
 import { appStore, haptic, passengerStore } from "@/lib/native";
+import type { RecentBooking } from "@/lib/recent-bookings";
 import { formatDateTime, formatKES } from "@/lib/format";
 
 type TripDriverProfile = {
