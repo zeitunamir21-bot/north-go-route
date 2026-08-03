@@ -8,12 +8,20 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
 import { WhatsAppFloating } from "@/components/WhatsAppFloating";
 import { SplashScreen } from "@/components/SplashScreen";
+import { OfflineBanner } from "@/components/OfflineBanner";
+import { PageTransition } from "@/components/PageTransition";
 import { registerServiceWorker } from "@/lib/register-sw";
+import {
+  hideNativeSplash,
+  syncStatusBar,
+  useAndroidBackButton,
+  useAppChrome,
+} from "@/lib/native";
 
 
 function NotFoundComponent() {
