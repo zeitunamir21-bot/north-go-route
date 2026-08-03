@@ -47,6 +47,8 @@ jobs:
           npm init -y >/dev/null 2>&1 || true
           npm install --no-save --legacy-peer-deps \
             @capacitor/cli@6 @capacitor/core@6 @capacitor/android@6 \
+            @capacitor/splash-screen@6 @capacitor/status-bar@6 \
+            @capacitor/keyboard@6 @capacitor/app@6 @capacitor/haptics@6 \
             typescript@5 @types/node@20
 
       - name: Generate App Icons and Splash
