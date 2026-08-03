@@ -8,12 +8,20 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
 import { WhatsAppFloating } from "@/components/WhatsAppFloating";
 import { SplashScreen } from "@/components/SplashScreen";
+import { OfflineBanner } from "@/components/OfflineBanner";
+import { PageTransition } from "@/components/PageTransition";
 import { registerServiceWorker } from "@/lib/register-sw";
+import {
+  hideNativeSplash,
+  syncStatusBar,
+  useAndroidBackButton,
+  useAppChrome,
+} from "@/lib/native";
 
 
 function NotFoundComponent() {
@@ -184,17 +192,38 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const [showSplash, setShowSplash] = useState(true);
+  const router = useRouter();
+
+  useAppChrome();
 
   useEffect(() => {
+    // Splash plays once per app session, not on every internal reload.
+    if (sessionStorage.getItem("northgo.splash-seen")) setShowSplash(false);
+    else sessionStorage.setItem("northgo.splash-seen", "1");
     registerServiceWorker();
+    hideNativeSplash();
+    const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+    syncStatusBar(theme);
   }, []);
+
+
+  // Android hardware back button: walk the router history, minimise at root.
+  const onBack = useCallback(() => {
+    if (window.location.pathname === "/") return false;
+    router.history.back();
+    return true;
+  }, [router]);
+  useAndroidBackButton(onBack);
 
   return (
     <QueryClientProvider client={queryClient}>
       {showSplash && <SplashScreen onFinished={() => setShowSplash(false)} />}
-      <Outlet />
+      <OfflineBanner />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
       <WhatsAppFloating />
-      <Toaster position="top-center" richColors />
+      <Toaster position="top-center" richColors closeButton />
     </QueryClientProvider>
   );
 }

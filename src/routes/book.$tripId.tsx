@@ -14,6 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { SeatPicker } from "@/components/SeatPicker";
 import { StarRating } from "@/components/StarRating";
 import { toast } from "sonner";
+import { appStore, haptic, passengerStore } from "@/lib/native";
+import type { RecentBooking } from "@/lib/recent-bookings";
 import { formatDateTime, formatKES } from "@/lib/format";
 
 type TripDriverProfile = {
@@ -64,6 +66,16 @@ function BookPage() {
     pickup_location: "",
     destination: "",
   });
+  // Autofill from the passenger details saved on this device.
+  useEffect(() => {
+    const saved = passengerStore.read();
+    if (saved) {
+      setForm((f) =>
+        f.customer_name || f.phone ? f : { ...f, customer_name: saved.name, phone: saved.phone },
+      );
+    }
+  }, []);
+
   const [promoInput, setPromoInput] = useState("");
   const [promo, setPromo] = useState<{ code: string; discount: number; description?: string } | null>(null);
   const [promoBusy, setPromoBusy] = useState(false);
@@ -213,6 +225,22 @@ function BookPage() {
       refetchTaken();
       return;
     }
+    passengerStore.save({ name: parsed.data.customer_name, phone: parsed.data.phone });
+    const recent = appStore.get<RecentBooking[]>("recent-bookings", []);
+    appStore.set(
+      "recent-bookings",
+      [
+        {
+          id: data.id,
+          route: trip?.route ?? "",
+          departure_time: trip?.departure_time ?? "",
+          seats: selectedSeats,
+          savedAt: new Date().toISOString(),
+        },
+        ...recent.filter((b) => b.id !== data.id),
+      ].slice(0, 5),
+    );
+    haptic("heavy");
     // Driver contact is revealed on the booking confirmation page.
     navigate({ to: "/booking/$bookingId", params: { bookingId: data.id } });
   }

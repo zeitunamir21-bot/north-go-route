@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { RecentAndPopular } from "@/components/RecentAndPopular";
 import { StatsRow } from "@/components/StatsRow";
 import { TrustBadges } from "@/components/TrustBadges";
 import { RouteInfo } from "@/components/RouteInfo";
@@ -97,6 +98,8 @@ function Home() {
           alt="View from a comfortable 7-seater Sienta traveling toward Mount Kenya at sunrise"
           width={1600}
           height={1024}
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div
@@ -152,6 +155,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* RECENT + POPULAR */}
+      <RecentAndPopular />
 
       {/* STATS */}
       <StatsRow />

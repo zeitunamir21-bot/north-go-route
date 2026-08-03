@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/lib/useAuth";
 import { BottomNav } from "@/components/BottomNav";
+import { PullToRefresh } from "@/components/PullToRefresh";
 import { formatDateTime, formatKES } from "@/lib/format";
 import { Ticket, MapPin, Clock, X, Download, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -54,7 +55,7 @@ function MyBookingsPage() {
     if (!authLoading && !session) navigate({ to: "/auth" });
   }, [authLoading, session, navigate]);
 
-  const { data: bookings = [], isLoading } = useQuery({
+  const { data: bookings = [], isLoading, refetch } = useQuery({
     queryKey: ["my-bookings"],
     enabled: !!session,
     queryFn: async () => {
@@ -116,6 +117,7 @@ function MyBookingsPage() {
   return (
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
+      <PullToRefresh onRefresh={() => refetch()}>
       <div className="mx-auto max-w-4xl px-4 py-10">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
@@ -198,6 +200,7 @@ function MyBookingsPage() {
           </div>
         )}
       </div>
+      </PullToRefresh>
       <Footer />
       <BottomNav />
     </div>

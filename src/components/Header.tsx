@@ -40,6 +40,7 @@ export function Header() {
           <NavLink to="/trips">Trips</NavLink>
           <NavLink to="/drivers">Drivers</NavLink>
           <NavLink to="/my-bookings">My Bookings</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
 
           <NavLink to="/driver">Driver</NavLink>
           <NavLink to="/admin">Admin</NavLink>
@@ -58,7 +59,7 @@ export function Header() {
             </Link>
           )}
           <Link
-            to={session ? "/my-bookings" : "/auth"}
+            to={session ? "/profile" : "/auth"}
             className="hidden items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-xs font-semibold md:inline-flex"
           >
             <UserIcon className="h-3.5 w-3.5" />
@@ -76,7 +77,7 @@ function NavLink({
   exact,
   children,
 }: {
-  to: "/" | "/trips" | "/drivers" | "/my-bookings" | "/driver" | "/admin";
+  to: "/" | "/trips" | "/drivers" | "/my-bookings" | "/profile" | "/driver" | "/admin";
   exact?: boolean;
   children: React.ReactNode;
 }) {

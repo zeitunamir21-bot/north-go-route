@@ -122,3 +122,105 @@
   from { transform: translateX(0); }
   to { transform: translateX(-56px); }
 }
+
+/* ---------------------------------------------------------------- */
+/* Material 3 / native Android surface system                        */
+/* ---------------------------------------------------------------- */
+
+:root {
+  --elevation-1: 0 1px 2px oklch(0.18 0.02 150 / 0.12), 0 1px 3px 1px oklch(0.18 0.02 150 / 0.08);
+  --elevation-2: 0 1px 2px oklch(0.18 0.02 150 / 0.14), 0 2px 6px 2px oklch(0.18 0.02 150 / 0.1);
+  --elevation-3: 0 4px 8px 3px oklch(0.18 0.02 150 / 0.12), 0 1px 3px oklch(0.18 0.02 150 / 0.16);
+  --motion-emphasized: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.dark {
+  --elevation-1: 0 1px 3px oklch(0 0 0 / 0.5);
+  --elevation-2: 0 2px 8px oklch(0 0 0 / 0.55);
+  --elevation-3: 0 6px 18px oklch(0 0 0 / 0.6);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+    text-size-adjust: 100%;
+  }
+  body {
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Native app chrome: no text selection or callouts on non-input surfaces. */
+  html.app-shell body {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  html.app-shell input,
+  html.app-shell textarea,
+  html.app-shell [contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+  /* Android-first type stack with the brand faces layered on top. */
+  :where(button, a) { touch-action: manipulation; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+}
+
+/* Modern Material card */
+.m3-card {
+  background-color: var(--color-card);
+  color: var(--color-card-foreground);
+  border-radius: 1.25rem;
+  box-shadow: var(--elevation-1);
+  border: 1px solid color-mix(in oklab, var(--color-border) 60%, transparent);
+}
+
+/* Ripple + press feedback */
+.m3-ripple { position: relative; overflow: hidden; }
+.m3-press { transition: transform 0.12s var(--motion-emphasized); }
+.m3-press:active { transform: scale(0.97); }
+
+.m3-ripple-wave {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: currentColor;
+  opacity: 0.18;
+  transform: scale(0);
+  animation: m3-ripple 520ms var(--motion-emphasized) forwards;
+}
+
+@keyframes m3-ripple {
+  to { transform: scale(1); opacity: 0; }
+}
+
+/* Bottom navigation active pill */
+.nav-item-active .nav-pill {
+  background-color: color-mix(in oklab, var(--color-primary) 20%, transparent);
+}
+.nav-item-active .nav-pill svg { color: var(--color-primary); }
+
+/* Screen transitions — short, native, no flash */
+.screen-enter {
+  animation: screen-in 240ms var(--motion-emphasized) both;
+}
+
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Seat selection pop */
+@keyframes seat-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+.seat-pop { animation: seat-pop 240ms var(--motion-emphasized); }
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-enter, .seat-pop, .m3-ripple-wave { animation: none !important; }
+}
