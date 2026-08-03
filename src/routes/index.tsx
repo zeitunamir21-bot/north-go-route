@@ -97,6 +97,8 @@ function Home() {
           alt="View from a comfortable 7-seater Sienta traveling toward Mount Kenya at sunrise"
           width={1600}
           height={1024}
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div
