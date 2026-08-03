@@ -310,6 +310,7 @@ function TripsPage() {
           </div>
         )}
       </div>
+      </PullToRefresh>
       <Footer />
       <BottomNav />
     </div>

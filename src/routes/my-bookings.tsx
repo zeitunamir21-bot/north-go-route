@@ -117,6 +117,7 @@ function MyBookingsPage() {
   return (
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
+      <PullToRefresh onRefresh={() => refetch()}>
       <div className="mx-auto max-w-4xl px-4 py-10">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
@@ -199,6 +200,7 @@ function MyBookingsPage() {
           </div>
         )}
       </div>
+      </PullToRefresh>
       <Footer />
       <BottomNav />
     </div>
