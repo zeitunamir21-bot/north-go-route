@@ -18,6 +18,8 @@ export function SeatPicker({
   maxSelect: number;
 }) {
   const seats = Array.from({ length: totalSeats }, (_, i) => i + 1);
+  const ripple = useRipple<HTMLButtonElement>();
+  const [popped, setPopped] = useState<number | null>(null);
 
   return (
     <div className="rounded-2xl border border-border bg-muted/30 p-5">
@@ -43,21 +45,32 @@ export function SeatPicker({
               key={n}
               type="button"
               disabled={disabled}
-              onClick={() => onToggle(n)}
+              onPointerDown={(e) => {
+                if (disabled) return;
+                ripple(e);
+                haptic("medium");
+              }}
+              onClick={() => {
+                setPopped(n);
+                window.setTimeout(() => setPopped((p) => (p === n ? null : p)), 260);
+                onToggle(n);
+              }}
               aria-pressed={isSelected}
               aria-label={`Seat ${n}${isTaken ? " (taken)" : ""}`}
               className={cn(
-                "relative h-14 rounded-xl border-2 text-sm font-bold transition",
+                "m3-ripple relative h-14 overflow-hidden rounded-xl border-2 text-sm font-bold",
+                "transition-[background-color,border-color,transform,box-shadow] duration-200 ease-[var(--motion-emphasized)]",
                 "flex flex-col items-center justify-center gap-0.5",
+                popped === n && "seat-pop",
                 isTaken &&
                   "cursor-not-allowed border-border bg-muted text-muted-foreground line-through",
                 !isTaken &&
                   isSelected &&
-                  "border-primary bg-primary text-primary-foreground shadow-[var(--shadow-elevated)] scale-[1.02]",
+                  "border-primary bg-primary text-primary-foreground shadow-[var(--elevation-3)] scale-[1.03]",
                 !isTaken &&
                   !isSelected &&
                   !atMax &&
-                  "border-border bg-card text-foreground hover:border-primary hover:bg-accent",
+                  "border-border bg-card text-foreground hover:border-primary hover:bg-accent active:scale-95",
                 !isTaken &&
                   !isSelected &&
                   atMax &&
@@ -69,6 +82,10 @@ export function SeatPicker({
                 {isTaken ? "Taken" : isSelected ? "Yours" : "Free"}
               </span>
             </button>
+          );
+        })}
+      </div>
+
           );
         })}
       </div>
