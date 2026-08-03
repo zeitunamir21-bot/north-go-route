@@ -28,5 +28,5 @@ export function DriverPhoto({ src, fallback, alt = "", ...rest }: Props) {
   if (!resolved) {
     return <div {...(rest as React.HTMLAttributes<HTMLDivElement>)} aria-label={alt} />;
   }
-  return <img {...rest} src={resolved} alt={alt} />;
+  return <img loading="lazy" decoding="async" {...rest} src={resolved} alt={alt} />;
 }
