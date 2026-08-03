@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/lib/useAuth";
 import { BottomNav } from "@/components/BottomNav";
+import { PullToRefresh } from "@/components/PullToRefresh";
 import { formatDateTime, formatKES } from "@/lib/format";
 import { Ticket, MapPin, Clock, X, Download, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -54,7 +55,7 @@ function MyBookingsPage() {
     if (!authLoading && !session) navigate({ to: "/auth" });
   }, [authLoading, session, navigate]);
 
-  const { data: bookings = [], isLoading } = useQuery({
+  const { data: bookings = [], isLoading, refetch } = useQuery({
     queryKey: ["my-bookings"],
     enabled: !!session,
     queryFn: async () => {

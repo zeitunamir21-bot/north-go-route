@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
 import { formatDay } from "@/lib/format";
 import { BottomNav } from "@/components/BottomNav";
+import { PullToRefresh } from "@/components/PullToRefresh";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -71,7 +72,7 @@ function inSlot(iso: string, slot: string) {
 
 function TripsPage() {
   const qc = useQueryClient();
-  const { data: trips = [], isLoading } = useQuery({
+  const { data: trips = [], isLoading, refetch } = useQuery({
     queryKey: ["trips", "all-upcoming"],
     queryFn: async () => {
       const { data, error } = await supabase.rpc("list_upcoming_trips_public");
@@ -146,6 +147,7 @@ function TripsPage() {
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
       <Header />
+      <PullToRefresh onRefresh={() => refetch()}>
       <div className="mx-auto max-w-6xl px-4 py-10 sm:py-12">
         <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">Available trips</h1>
         <p className="mt-2 text-muted-foreground">Reserve a seat — pay on board.</p>
