@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { RecentAndPopular } from "@/components/RecentAndPopular";
 import { StatsRow } from "@/components/StatsRow";
 import { TrustBadges } from "@/components/TrustBadges";
 import { RouteInfo } from "@/components/RouteInfo";
@@ -154,6 +155,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* RECENT + POPULAR */}
+      <RecentAndPopular />
 
       {/* STATS */}
       <StatsRow />
