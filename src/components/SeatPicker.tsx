@@ -86,10 +86,6 @@ export function SeatPicker({
         })}
       </div>
 
-          );
-        })}
-      </div>
-
       <Legend />
     </div>
   );
