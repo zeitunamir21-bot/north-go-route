@@ -184,17 +184,34 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const [showSplash, setShowSplash] = useState(true);
+  const router = useRouter();
+
+  useAppChrome();
 
   useEffect(() => {
     registerServiceWorker();
+    hideNativeSplash();
+    const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+    syncStatusBar(theme);
   }, []);
+
+  // Android hardware back button: walk the router history, minimise at root.
+  const onBack = useCallback(() => {
+    if (window.location.pathname === "/") return false;
+    router.history.back();
+    return true;
+  }, [router]);
+  useAndroidBackButton(onBack);
 
   return (
     <QueryClientProvider client={queryClient}>
       {showSplash && <SplashScreen onFinished={() => setShowSplash(false)} />}
-      <Outlet />
+      <OfflineBanner />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
       <WhatsAppFloating />
-      <Toaster position="top-center" richColors />
+      <Toaster position="top-center" richColors closeButton />
     </QueryClientProvider>
   );
 }
