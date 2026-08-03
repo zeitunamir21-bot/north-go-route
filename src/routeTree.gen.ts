@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TripsRouteImport } from './routes/trips'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as NairobiToIsioloRouteImport } from './routes/nairobi-to-isiolo'
 import { Route as MyBookingsRouteImport } from './routes/my-bookings'
 import { Route as IsioloToNairobiRouteImport } from './routes/isiolo-to-nairobi'
@@ -45,6 +46,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NairobiToIsioloRoute = NairobiToIsioloRouteImport.update({
@@ -155,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/isiolo-to-nairobi': typeof IsioloToNairobiRoute
   '/my-bookings': typeof MyBookingsRoute
   '/nairobi-to-isiolo': typeof NairobiToIsioloRoute
+  '/profile': typeof ProfileRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trips': typeof TripsRoute
@@ -179,6 +186,7 @@ export interface FileRoutesByTo {
   '/isiolo-to-nairobi': typeof IsioloToNairobiRoute
   '/my-bookings': typeof MyBookingsRoute
   '/nairobi-to-isiolo': typeof NairobiToIsioloRoute
+  '/profile': typeof ProfileRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trips': typeof TripsRoute
@@ -204,6 +212,7 @@ export interface FileRoutesById {
   '/isiolo-to-nairobi': typeof IsioloToNairobiRoute
   '/my-bookings': typeof MyBookingsRoute
   '/nairobi-to-isiolo': typeof NairobiToIsioloRoute
+  '/profile': typeof ProfileRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trips': typeof TripsRoute
@@ -230,6 +239,7 @@ export interface FileRouteTypes {
     | '/isiolo-to-nairobi'
     | '/my-bookings'
     | '/nairobi-to-isiolo'
+    | '/profile'
     | '/reset-password'
     | '/sitemap.xml'
     | '/trips'
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
     | '/isiolo-to-nairobi'
     | '/my-bookings'
     | '/nairobi-to-isiolo'
+    | '/profile'
     | '/reset-password'
     | '/sitemap.xml'
     | '/trips'
@@ -278,6 +289,7 @@ export interface FileRouteTypes {
     | '/isiolo-to-nairobi'
     | '/my-bookings'
     | '/nairobi-to-isiolo'
+    | '/profile'
     | '/reset-password'
     | '/sitemap.xml'
     | '/trips'
@@ -303,6 +315,7 @@ export interface RootRouteChildren {
   IsioloToNairobiRoute: typeof IsioloToNairobiRoute
   MyBookingsRoute: typeof MyBookingsRoute
   NairobiToIsioloRoute: typeof NairobiToIsioloRoute
+  ProfileRoute: typeof ProfileRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TripsRoute: typeof TripsRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/reset-password'
       fullPath: '/reset-password'
       preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nairobi-to-isiolo': {
@@ -487,6 +507,7 @@ const rootRouteChildren: RootRouteChildren = {
   IsioloToNairobiRoute: IsioloToNairobiRoute,
   MyBookingsRoute: MyBookingsRoute,
   NairobiToIsioloRoute: NairobiToIsioloRoute,
+  ProfileRoute: ProfileRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TripsRoute: TripsRoute,
