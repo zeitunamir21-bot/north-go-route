@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { CircleDot } from "lucide-react";
+import { haptic } from "@/lib/native";
+import { useRipple } from "@/components/native/Touchable";
 
 export function SeatPicker({
   totalSeats,
