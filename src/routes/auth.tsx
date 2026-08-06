@@ -26,6 +26,7 @@ export const Route = createFileRoute("/auth")({
 function AuthPage() {
   const navigate = useNavigate();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
+  const [accountType, setAccountType] = useState<"passenger" | "driver" | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +37,7 @@ function AuthPage() {
       if (data.session) navigate({ to: "/my-bookings" });
     });
   }, [navigate]);
+
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
