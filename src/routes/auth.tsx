@@ -79,20 +79,70 @@ function AuthPage() {
 
           <div className="mt-5 flex rounded-lg border border-border bg-muted p-1 text-sm font-medium">
             <button
-              onClick={() => setMode("signin")}
+              onClick={() => {
+                setMode("signin");
+                setAccountType(null);
+              }}
               className={`flex-1 rounded-md py-1.5 ${mode === "signin" ? "bg-background shadow" : "text-muted-foreground"}`}
             >
               Sign in
             </button>
             <button
-              onClick={() => setMode("signup")}
+              onClick={() => {
+                setMode("signup");
+                setAccountType(null);
+              }}
               className={`flex-1 rounded-md py-1.5 ${mode === "signup" ? "bg-background shadow" : "text-muted-foreground"}`}
             >
               Create account
             </button>
           </div>
 
+          {mode === "signup" && accountType === null && (
+            <div className="mt-5 space-y-3">
+              <p className="text-sm font-medium">What kind of account do you need?</p>
+              <button
+                type="button"
+                onClick={() => setAccountType("passenger")}
+                className="flex w-full items-start gap-3 rounded-xl border border-border p-4 text-left transition hover:border-primary hover:bg-accent"
+              >
+                <UserRound className="mt-0.5 h-5 w-5 text-primary" />
+                <span>
+                  <span className="block font-semibold">Passenger sign up</span>
+                  <span className="block text-xs text-muted-foreground">
+                    Book seats, track trips and manage bookings. Takes 30 seconds.
+                  </span>
+                </span>
+              </button>
+              <Link
+                to="/driver/signup"
+                className="flex w-full items-start gap-3 rounded-xl border border-border p-4 text-left transition hover:border-primary hover:bg-accent"
+              >
+                <Car className="mt-0.5 h-5 w-5 text-primary" />
+                <span>
+                  <span className="block font-semibold">Driver sign up</span>
+                  <span className="block text-xs text-muted-foreground">
+                    Post trips and take bookings. We'll ask for your vehicle and licence details.
+                  </span>
+                </span>
+              </Link>
+            </div>
+          )}
+
+          {mode === "signin" && (
+            <p className="mt-4 rounded-lg bg-muted/60 px-3 py-2 text-xs text-muted-foreground">
+              Passengers and drivers use the same sign in. Drivers land on their dashboard
+              automatically — or go straight to{" "}
+              <Link to="/driver/login" className="text-primary underline">
+                driver sign in
+              </Link>
+              .
+            </p>
+          )}
+
+          {(mode === "signin" || accountType === "passenger") && (
           <form onSubmit={onSubmit} className="mt-5 space-y-4">
+
             {mode === "signup" && (
               <div>
                 <Label htmlFor="name">Full name</Label>
