@@ -9,5 +9,7 @@ Disallow: /driver/login
 Disallow: /driver/signup
 Disallow: /reset-password
 Disallow: /forgot-password
+Disallow: /profile
+
 
 Sitemap: https://north-go-route.lovable.app/sitemap.xml
