@@ -337,6 +337,7 @@ export type Database = {
       get_taken_seats: { Args: { p_trip_id: string }; Returns: number[] }
       get_top_reviews: { Args: { p_limit?: number }; Returns: Json }
       get_trip_driver_public: { Args: { p_trip_id: string }; Returns: Json }
+      get_trip_phones: { Args: never; Returns: Json }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

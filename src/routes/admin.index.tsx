@@ -89,18 +89,33 @@ function AdminPage() {
     };
   }, [authChecked, qc]);
 
+  // Driver phone numbers are not readable straight off the table any more —
+  // admins fetch them through a role-checked lookup.
+  const { data: phones = {} } = useQuery({
+    queryKey: ["admin", "trip-phones"],
+    enabled: authChecked,
+    queryFn: async () => {
+      const { data, error } = await supabase.rpc("get_trip_phones");
+      if (error) throw error;
+      return (data ?? {}) as Record<string, string>;
+    },
+  });
+
   const { data: trips = [], refetch: refetchTrips } = useQuery({
-    queryKey: ["admin", "trips"],
+    queryKey: ["admin", "trips", phones],
     enabled: authChecked,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("trips")
-        .select("*")
+        .select(
+          "id,route,departure_time,pickup_point,total_seats,available_seats,vehicle_name,driver_name,price,status,notes,owner_id,created_at,updated_at",
+        )
         .order("departure_time", { ascending: false });
       if (error) throw error;
-      return data;
+      return (data ?? []).map((t) => ({ ...t, driver_phone: phones[t.id] ?? "" }));
     },
   });
+
 
   const { data: bookings = [], refetch: refetchBookings } = useQuery({
     queryKey: ["admin", "bookings"],

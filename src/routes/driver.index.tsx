@@ -120,13 +120,18 @@ function DriverPage() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("trips")
-        .select("*")
+        .select(
+          "id,route,departure_time,pickup_point,total_seats,available_seats,vehicle_name,driver_name,price,status,notes,owner_id,created_at,updated_at",
+        )
         .eq("owner_id", userId!)
         .order("departure_time", { ascending: false });
       if (error) throw error;
-      return data as Trip[];
+      // driver_phone is intentionally not readable from the table; the driver's
+      // own number already lives on their profile row.
+      return (data ?? []).map((t) => ({ ...t, driver_phone: driver?.phone ?? "" })) as Trip[];
     },
   });
+
 
   if (!checked) {
     return (
