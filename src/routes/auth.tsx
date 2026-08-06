@@ -190,6 +190,8 @@ function AuthPage() {
               {mode === "signin" ? "Sign in" : "Create account"}
             </Button>
           </form>
+          )}
+
         </div>
       </div>
       <Footer />
