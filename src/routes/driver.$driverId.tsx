@@ -11,12 +11,28 @@ import { StarRating } from "@/components/StarRating";
 import { formatDateTime, formatKES } from "@/lib/format";
 
 export const Route = createFileRoute("/driver/$driverId")({
-  head: () => ({
-    meta: [
-      { title: "Driver profile — NorthGo" },
-      { name: "description", content: "View driver details, vehicle, reviews and upcoming trips." },
-    ],
-  }),
+  head: ({ params }) => {
+    const url = `https://north-go-route.lovable.app/driver/${params.driverId}`;
+    return {
+      meta: [
+        { title: "Driver profile — NorthGo" },
+        {
+          name: "description",
+          content: "View driver details, vehicle, reviews and upcoming trips.",
+        },
+        { property: "og:title", content: "Driver profile — NorthGo" },
+        {
+          property: "og:description",
+          content: "View driver details, vehicle, reviews and upcoming trips.",
+        },
+        { property: "og:type", content: "profile" },
+        { property: "og:url", content: url },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
+
   component: DriverProfilePage,
 });
 
