@@ -23,19 +23,18 @@ const config: CapacitorConfig = {
     allowMixedContent: false,
     // Hide WebView artifacts: no overscroll glow, no zoom controls, no debug chrome.
     webContentsDebuggingEnabled: false,
-    backgroundColor: "#16A34A",
+    backgroundColor: "#FAFAF7",
     loggingBehavior: "none",
   },
   plugins: {
     SplashScreen: {
       launchShowDuration: 1200,
       launchAutoHide: true,
-      backgroundColor: "#16A34A",
+      backgroundColor: "#FAFAF7",
       androidSplashResourceName: "splash",
       androidScaleType: "CENTER_CROP",
-      showSpinner: true,
-      androidSpinnerStyle: "large",
-      spinnerColor: "#FFFFFF",
+      showSpinner: false,
+      spinnerColor: "#16A34A",
       splashFullScreen: true,
       splashImmersive: false,
     },

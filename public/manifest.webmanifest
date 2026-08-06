@@ -4,7 +4,7 @@
   "description": "Book your Isiolo \u21c4 Nairobi seat in a 7-seater Sienta. Reserve online, pay on board.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#16A34A",
+  "background_color": "#FAFAF7",
   "theme_color": "#16A34A",
   "orientation": "portrait",
   "scope": "/",
