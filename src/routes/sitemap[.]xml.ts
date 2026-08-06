@@ -9,11 +9,10 @@ interface SitemapEntry {
   priority?: string;
 }
 
-const entries: SitemapEntry[] = [
+const staticEntries: SitemapEntry[] = [
   { path: "/", changefreq: "daily", priority: "1.0" },
   { path: "/trips", changefreq: "hourly", priority: "0.9" },
-  { path: "/drivers", changefreq: "daily", priority: "0.7" },
-
+  { path: "/drivers", changefreq: "daily", priority: "0.8" },
   { path: "/isiolo-to-nairobi", changefreq: "daily", priority: "0.9" },
   { path: "/nairobi-to-isiolo", changefreq: "daily", priority: "0.9" },
   { path: "/about", changefreq: "monthly", priority: "0.6" },
@@ -21,10 +20,38 @@ const entries: SitemapEntry[] = [
   { path: "/faq", changefreq: "monthly", priority: "0.6" },
 ];
 
+/** Public driver profile pages, mirroring the /drivers listing source. */
+async function driverEntries(): Promise<SitemapEntry[]> {
+  try {
+    const url = process.env["VITE_SUPABASE_URL"] ?? process.env["SUPABASE_URL"];
+    const key = process.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
+    if (!url || !key) return [];
+    const res = await fetch(`${url}/rest/v1/rpc/list_drivers_public`, {
+      method: "POST",
+      headers: { apikey: key, "Content-Type": "application/json" },
+      body: "{}",
+    });
+    if (!res.ok) return [];
+    const rows = (await res.json()) as Array<{ id?: string }> | { id?: string }[] | null;
+    if (!Array.isArray(rows)) return [];
+    return rows
+      .filter((r) => typeof r?.id === "string")
+      .map((r) => ({
+        path: `/driver/${r.id}`,
+        changefreq: "weekly" as const,
+        priority: "0.6",
+      }));
+  } catch {
+    return [];
+  }
+}
+
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const entries = [...staticEntries, ...(await driverEntries())];
+
         const urls = entries.map((e) =>
           [
             `  <url>`,
