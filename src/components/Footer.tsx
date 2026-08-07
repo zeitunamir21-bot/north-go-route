@@ -49,8 +49,12 @@ export function Footer() {
           >
             WhatsApp support
           </a>
-          <a href="mailto:hello@northgo.co.ke" className="block text-sm text-secondary-foreground/70 hover:text-primary">
-            hello@northgo.co.ke
+          <a
+            href={supportMailto()}
+            aria-label="Email NorthGo support"
+            className="mt-1 inline-flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-primary"
+          >
+            <Mail className="h-4 w-4" aria-hidden="true" /> Email support
           </a>
         </div>
       </div>
