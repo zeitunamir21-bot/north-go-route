@@ -135,9 +135,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               "@type": "Organization",
               "@id": "https://north-go-route.lovable.app/#organization",
               name: "NorthGo",
+              alternateName: ["North Go", "NorthGo Kenya", "NorthGo Transport"],
               url: "https://north-go-route.lovable.app",
               logo: "https://north-go-route.lovable.app/icon-512.png",
-              description: "Daily 7-seater Sienta rides between Isiolo and Nairobi with verified Kenyan drivers. Reserve online, pay on board.",
+              description:
+                "NorthGo provides private transport between Isiolo and Nairobi, Kenya, with verified drivers and 7-seater Sienta vehicles. Reserve online, pay on board.",
               areaServed: { "@type": "Country", name: "Kenya" },
               contactPoint: {
                 "@type": "ContactPoint",
