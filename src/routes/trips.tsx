@@ -17,15 +17,16 @@ const TRIPS_URL = "https://north-go-route.lovable.app/trips";
 export const Route = createFileRoute("/trips")({
   head: () => ({
     meta: [
-      { title: "Available Trips — Isiolo ⇄ Nairobi Seat Booking | NorthGo" },
-      { name: "description", content: "Browse upcoming Isiolo ⇄ Nairobi 7-seater Sienta rides. Live seat availability, verified Kenyan drivers, reserve online and pay on board." },
-      { property: "og:title", content: "Available Trips — Isiolo ⇄ Nairobi | NorthGo" },
-      { property: "og:description", content: "Live seat availability for daily Isiolo ⇄ Nairobi rides. Reserve online, pay on board." },
+      { title: "Available Trips — NorthGo Isiolo ⇄ Nairobi Private Transport" },
+      { name: "description", content: "Browse upcoming NorthGo private transport trips between Isiolo and Nairobi. Live seat availability, verified Kenyan drivers, reserve online and pay on board." },
+      { name: "keywords", content: "NorthGo transport booking, Isiolo Nairobi transport, Nairobi Isiolo transport, private transport Kenya, NorthGo Kenya" },
+      { property: "og:title", content: "Available Trips — NorthGo Private Transport" },
+      { property: "og:description", content: "Live seat availability for daily Isiolo ⇄ Nairobi private transport. Reserve online, pay on board." },
       { property: "og:url", content: TRIPS_URL },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Available Trips — Isiolo ⇄ Nairobi | NorthGo" },
-      { name: "twitter:description", content: "Live seat availability for daily Isiolo ⇄ Nairobi rides." },
+      { name: "twitter:title", content: "Available Trips — NorthGo Private Transport" },
+      { name: "twitter:description", content: "Live seat availability for daily Isiolo ⇄ Nairobi NorthGo trips." },
     ],
     links: [{ rel: "canonical", href: TRIPS_URL }],
   }),
