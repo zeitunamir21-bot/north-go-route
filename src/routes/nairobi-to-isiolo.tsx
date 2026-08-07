@@ -14,12 +14,14 @@ const URL = "https://north-go-route.lovable.app/nairobi-to-isiolo";
 export const Route = createFileRoute("/nairobi-to-isiolo")({
   head: () => ({
     meta: [
-      { title: "Nairobi to Isiolo Booking — Book a 7-Seater Sienta Seat Online | NorthGo" },
-      { name: "description", content: "Book your Nairobi to Isiolo 7-seater Sienta seat online. Daily trips on the A2 highway. Verified drivers. KES 1,300. Pay on board." },
-      { name: "keywords", content: "Nairobi to Isiolo, Nairobi Isiolo booking, Sienta Nairobi Isiolo, transport Nairobi Isiolo, Nairobi Isiolo fare" },
-      { property: "og:title", content: "Nairobi to Isiolo — Book a Seat Online" },
-      { property: "og:description", content: "Daily Nairobi to Isiolo 7-seater Sienta trips. Verified drivers, real seat availability, pay on board." },
+      { title: "Nairobi to Isiolo Booking — NorthGo Private Transport Kenya" },
+      { name: "description", content: "Book Nairobi to Isiolo private transport with NorthGo. Daily 7-seater Sienta trips on the A2 highway, verified Kenyan drivers, KES 1,300, pay on board." },
+      { name: "keywords", content: "Nairobi to Isiolo booking, Nairobi Isiolo transport, NorthGo Nairobi, private transport Nairobi, NorthGo private transport, private transport Kenya" },
+      { property: "og:title", content: "Nairobi to Isiolo — NorthGo Private Transport Booking" },
+      { property: "og:description", content: "Daily Nairobi to Isiolo private transport. Verified drivers, real seat availability, pay on board." },
       { property: "og:url", content: URL },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL }],
     scripts: [

@@ -12,11 +12,14 @@ const URL = "https://north-go-route.lovable.app/about";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About NorthGo — Trusted Isiolo ⇄ Nairobi Transport" },
-      { name: "description", content: "NorthGo connects travelers with verified Kenyan drivers on the Isiolo ⇄ Nairobi route. Learn our story, mission, and safety standards." },
-      { property: "og:title", content: "About NorthGo — Trusted Isiolo ⇄ Nairobi Transport" },
-      { property: "og:description", content: "Verified drivers, fair fares, and reliable daily departures between Isiolo and Nairobi." },
+      { title: "About NorthGo — Private Transport Isiolo ⇄ Nairobi, Kenya" },
+      { name: "description", content: "NorthGo Kenya connects travellers with verified drivers for private transport between Isiolo and Nairobi. Our story, mission and safety standards." },
+      { name: "keywords", content: "NorthGo, North Go, NorthGo Kenya, NorthGo private transport, private transport Kenya, Isiolo Nairobi transport" },
+      { property: "og:title", content: "About NorthGo — Private Transport Isiolo ⇄ Nairobi" },
+      { property: "og:description", content: "Verified drivers, fair fares and reliable daily private transport between Isiolo and Nairobi." },
       { property: "og:url", content: URL },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL }],
   }),
