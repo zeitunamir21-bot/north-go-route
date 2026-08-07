@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { Mail } from "lucide-react";
+import { supportMailto } from "@/components/SupportEmailButton";
 
 export function Footer() {
   return (
