@@ -110,14 +110,15 @@ function Home() {
           <div className="max-w-2xl text-white">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Daily trips · Isiolo ⇄ Nairobi
+              Daily private transport · Isiolo ⇄ Nairobi
             </span>
             <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              Book your <span className="text-primary">Isiolo ⇄ Nairobi</span> seat in minutes.
+              NorthGo <span className="text-primary">Isiolo ⇄ Nairobi</span> private transport
+              booking.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">
-              Safe, reliable, and affordable travel with real-time seat availability. Verified
-              Kenyan drivers, transparent fares, pay on board.
+              Book private transport in Kenya between Isiolo and Nairobi in minutes. Real-time seat
+              availability, verified Kenyan drivers, transparent fares, pay on board.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="h-14 rounded-xl px-8 text-base font-semibold">
