@@ -127,12 +127,13 @@ function Home() {
               Daily private transport · Isiolo ⇄ Nairobi
             </span>
             <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              NorthGo <span className="text-primary">Isiolo ⇄ Nairobi</span> private transport
-              booking.
+              NorthGo booking — <span className="text-primary">Isiolo ⇄ Nairobi</span> private
+              transport.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">
-              Book private transport in Kenya between Isiolo and Nairobi in minutes. Real-time seat
-              availability, verified Kenyan drivers, transparent fares, pay on board.
+              This is the official NorthGo booking website for private transport in Kenya between
+              Isiolo and Nairobi. Real-time seat availability, verified Kenyan drivers, transparent
+              fares, pay on board.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="h-14 rounded-xl px-8 text-base font-semibold">
