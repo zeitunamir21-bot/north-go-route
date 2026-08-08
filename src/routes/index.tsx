@@ -9,11 +9,8 @@ import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { RecentAndPopular } from "@/components/RecentAndPopular";
-import { StatsRow } from "@/components/StatsRow";
-import { TrustBadges } from "@/components/TrustBadges";
-import { RouteInfo } from "@/components/RouteInfo";
-import { FAQ } from "@/components/FAQ";
 import { ContactSupport } from "@/components/ContactSupport";
+
 import { BottomNav } from "@/components/BottomNav";
 import { StickyBookCTA } from "@/components/StickyBookCTA";
 import { PromoBanner } from "@/components/PromoBanner";
@@ -26,13 +23,13 @@ const HOME_URL = "https://north-go-route.lovable.app/";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport" },
+      { title: "NorthGo Booking — Isiolo ⇄ Nairobi Private Transport" },
       {
         name: "description",
         content:
-          "NorthGo booking made simple: book private transport between Isiolo and Nairobi online in minutes. Daily 7-seater Sienta trips, live seat availability, verified Kenyan drivers, pay on board.",
+          "Book a seat between Isiolo and Nairobi in minutes. Live seat availability, verified drivers, pay on board.",
       },
-      { name: "keywords", content: "NorthGo booking, North Go booking, NorthGo Kenya booking, NorthGo Isiolo booking, NorthGo Nairobi booking, Isiolo to Nairobi NorthGo booking, Nairobi to Isiolo NorthGo booking, NorthGo, North Go, Isiolo Nairobi transport, Nairobi Isiolo transport, NorthGo transport booking, private transport Kenya, private transport Isiolo, private transport Nairobi, NorthGo private transport" },
+
       { property: "og:title", content: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport" },
       { property: "og:description", content: "The official NorthGo booking website. Book private transport between Isiolo and Nairobi with live seat availability, verified Kenyan drivers, pay on board." },
       { property: "og:url", content: HOME_URL },
@@ -131,10 +128,9 @@ function Home() {
               transport.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">
-              This is the official NorthGo booking website for private transport in Kenya between
-              Isiolo and Nairobi. Real-time seat availability, verified Kenyan drivers, transparent
-              fares, pay on board.
+              Book a seat in under a minute. Live seat availability, verified drivers, pay on board.
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="h-14 rounded-xl px-8 text-base font-semibold">
                 <Link to="/trips">
@@ -175,11 +171,7 @@ function Home() {
       {/* RECENT + POPULAR */}
       <RecentAndPopular />
 
-      {/* STATS */}
-      <StatsRow />
 
-      {/* TRUST BADGES */}
-      <TrustBadges />
 
       {/* WHY US */}
       <section className="mx-auto max-w-6xl px-4 py-16">
@@ -206,8 +198,8 @@ function Home() {
         </div>
       </section>
 
-      {/* ROUTE INFO */}
-      <RouteInfo />
+
+
 
       {/* TRIPS PREVIEW */}
       <section className="mx-auto max-w-6xl px-4 py-16">
@@ -234,49 +226,28 @@ function Home() {
       </section>
 
       <ReviewsSection />
-      <FAQ />
+
 
       {/* DRIVER SIGNUP */}
       <section className="mx-auto max-w-6xl px-4 pb-4">
-        <div className="rounded-3xl border border-border bg-card p-8 shadow-[var(--shadow-card)] md:p-12">
-          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-xl">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                <Car className="h-3.5 w-3.5" /> Drive with NorthGo
-              </span>
-              <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
-                Own a 7-seater? Fill your seats on every trip.
-              </h2>
-              <p className="mt-3 text-muted-foreground">
-                Sign up free, add your profile picture, vehicle and plate number, then post your own
-                Isiolo ↔ Nairobi departure times. Passengers book your seats directly — you keep the fare.
-              </p>
-              <ul className="mt-5 grid gap-2 text-sm sm:grid-cols-2">
-                {[
-                  "Free to join, no commission",
-                  "Post and edit your own trips",
-                  "Profile photo, ratings & reviews",
-                  "Instant WhatsApp booking alerts",
-                ].map((b) => (
-                  <li key={b} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 shrink-0 text-primary" /> {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex w-full flex-col gap-3 md:w-auto">
-              <Button asChild size="lg" className="h-13 rounded-xl px-8 text-base font-semibold">
-                <Link to="/driver/signup">
-                  Become a driver <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-xl">
-                <Link to="/driver/login">Driver sign in</Link>
-              </Button>
+        <div className="flex flex-col items-start gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:flex-row sm:items-center sm:justify-between md:p-8">
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-primary">
+              <Car className="h-5 w-5" />
+            </span>
+            <div>
+              <h2 className="font-display text-xl font-bold">Own a 7-seater?</h2>
+              <p className="text-sm text-muted-foreground">Post your trips and fill your seats.</p>
             </div>
           </div>
+          <Button asChild size="lg" className="rounded-xl">
+            <Link to="/driver/signup">
+              Become a driver <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
+
 
       <ContactSupport />
 
