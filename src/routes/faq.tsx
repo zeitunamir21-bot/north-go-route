@@ -32,8 +32,11 @@ const faqEntries = [
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "NorthGo FAQ — Isiolo ⇄ Nairobi Booking Questions" },
-      { name: "description", content: "Answers to common questions about booking, cancelling, fares, pickup points, and driver verification on NorthGo." },
+      { title: "NorthGo Booking FAQ — Isiolo ⇄ Nairobi Private Transport" },
+      { name: "description", content: "Answers to common NorthGo booking questions: how to book, cancel, fares, pickup points and driver verification for Isiolo ⇄ Nairobi private transport." },
+      { name: "keywords", content: "NorthGo booking, North Go booking, NorthGo booking help, Isiolo Nairobi transport, private transport Kenya" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "NorthGo FAQ — Isiolo ⇄ Nairobi" },
       { property: "og:description", content: "Common questions about NorthGo Isiolo ⇄ Nairobi seat bookings." },
       { property: "og:url", content: URL },

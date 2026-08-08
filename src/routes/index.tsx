@@ -26,20 +26,20 @@ const HOME_URL = "https://north-go-route.lovable.app/";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NorthGo — Isiolo to Nairobi Private Transport Booking, Kenya" },
+      { title: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport" },
       {
         name: "description",
         content:
-          "NorthGo Kenya: book private transport between Isiolo and Nairobi online in minutes. Daily 7-seater Sienta trips, live seat availability, verified drivers, pay on board.",
+          "NorthGo booking made simple: book private transport between Isiolo and Nairobi online in minutes. Daily 7-seater Sienta trips, live seat availability, verified Kenyan drivers, pay on board.",
       },
-      { name: "keywords", content: "NorthGo, North Go, NorthGo Kenya, NorthGo Isiolo, NorthGo Nairobi, Isiolo to Nairobi booking, Nairobi to Isiolo booking, Isiolo Nairobi transport, Nairobi Isiolo transport, NorthGo transport booking, private transport Kenya, private transport Isiolo, private transport Nairobi, NorthGo private transport" },
-      { property: "og:title", content: "NorthGo — Isiolo ⇄ Nairobi Private Transport Booking" },
-      { property: "og:description", content: "Book NorthGo private transport between Isiolo and Nairobi. Live seat availability, verified Kenyan drivers, pay on board." },
+      { name: "keywords", content: "NorthGo booking, North Go booking, NorthGo Kenya booking, NorthGo Isiolo booking, NorthGo Nairobi booking, Isiolo to Nairobi NorthGo booking, Nairobi to Isiolo NorthGo booking, NorthGo, North Go, Isiolo Nairobi transport, Nairobi Isiolo transport, NorthGo transport booking, private transport Kenya, private transport Isiolo, private transport Nairobi, NorthGo private transport" },
+      { property: "og:title", content: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport" },
+      { property: "og:description", content: "The official NorthGo booking website. Book private transport between Isiolo and Nairobi with live seat availability, verified Kenyan drivers, pay on board." },
       { property: "og:url", content: HOME_URL },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "NorthGo — Isiolo ⇄ Nairobi Private Transport Booking" },
-      { name: "twitter:description", content: "Daily private 7-seater Sienta transport. Live seat availability, verified drivers, pay on board." },
+      { name: "twitter:title", content: "NorthGo Booking — Isiolo ⇄ Nairobi Private Transport" },
+      { name: "twitter:description", content: "Official NorthGo booking site. Daily private 7-seater Sienta transport, live seat availability, verified drivers." },
     ],
     links: [{ rel: "canonical", href: HOME_URL }],
     scripts: [
@@ -47,13 +47,27 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "NorthGo — Isiolo ⇄ Nairobi 7-Seater Sienta Booking in Kenya",
-          url: HOME_URL,
-          description: "Book your Isiolo ⇄ Nairobi seat online. Daily 7-seater Sienta trips, verified Kenyan drivers, pay on board.",
-          isPartOf: { "@id": "https://north-go-route.lovable.app/#website" },
-          about: { "@id": "https://north-go-route.lovable.app/#organization" },
-          primaryImageOfPage: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": `${HOME_URL}#webpage`,
+              name: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport",
+              url: HOME_URL,
+              description: "Official NorthGo booking website. Book your Isiolo ⇄ Nairobi seat online: daily 7-seater Sienta private transport, verified Kenyan drivers, pay on board.",
+              isPartOf: { "@id": "https://north-go-route.lovable.app/#website" },
+              about: { "@id": "https://north-go-route.lovable.app/#organization" },
+              primaryImageOfPage: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504",
+            },
+            {
+              "@type": "Service",
+              "@id": `${HOME_URL}#booking-service`,
+              name: "NorthGo booking — private transport Isiolo ⇄ Nairobi",
+              serviceType: "Private transport booking",
+              provider: { "@id": "https://north-go-route.lovable.app/#organization" },
+              areaServed: ["Isiolo", "Nairobi", "Kenya"],
+              offers: { "@type": "Offer", price: "1300", priceCurrency: "KES", url: "https://north-go-route.lovable.app/trips" },
+            },
+          ],
         }),
       },
     ],
@@ -113,12 +127,13 @@ function Home() {
               Daily private transport · Isiolo ⇄ Nairobi
             </span>
             <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              NorthGo <span className="text-primary">Isiolo ⇄ Nairobi</span> private transport
-              booking.
+              NorthGo booking — <span className="text-primary">Isiolo ⇄ Nairobi</span> private
+              transport.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">
-              Book private transport in Kenya between Isiolo and Nairobi in minutes. Real-time seat
-              availability, verified Kenyan drivers, transparent fares, pay on board.
+              This is the official NorthGo booking website for private transport in Kenya between
+              Isiolo and Nairobi. Real-time seat availability, verified Kenyan drivers, transparent
+              fares, pay on board.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="h-14 rounded-xl px-8 text-base font-semibold">

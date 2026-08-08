@@ -12,11 +12,11 @@ const URL = "https://north-go-route.lovable.app/drivers";
 export const Route = createFileRoute("/drivers")({
   head: () => ({
     meta: [
-      { title: "Verified NorthGo Drivers — Isiolo ⇄ Nairobi | NorthGo" },
+      { title: "Verified NorthGo Drivers — Isiolo ⇄ Nairobi NorthGo Booking" },
       {
         name: "description",
         content:
-          "Meet NorthGo's verified Kenyan drivers: ratings, experience, completed trips, languages spoken and 7-seater Sienta vehicle details before you book.",
+          "Before your NorthGo booking, meet our verified Kenyan drivers: ratings, experience, completed trips, languages spoken and 7-seater Sienta vehicle details before you book.",
       },
       { property: "og:title", content: "Verified NorthGo Drivers — Isiolo ⇄ Nairobi" },
       { property: "og:description", content: "Ratings, experience and vehicle details for every verified NorthGo driver." },
