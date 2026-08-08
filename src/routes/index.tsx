@@ -131,10 +131,9 @@ function Home() {
               transport.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">
-              This is the official NorthGo booking website for private transport in Kenya between
-              Isiolo and Nairobi. Real-time seat availability, verified Kenyan drivers, transparent
-              fares, pay on board.
+              Book a seat in under a minute. Live seat availability, verified drivers, pay on board.
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="h-14 rounded-xl px-8 text-base font-semibold">
                 <Link to="/trips">
