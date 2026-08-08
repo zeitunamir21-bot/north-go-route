@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about")({
     meta: [
       { title: "About NorthGo — Private Transport Isiolo ⇄ Nairobi, Kenya" },
       { name: "description", content: "NorthGo Kenya connects travellers with verified drivers for private transport between Isiolo and Nairobi. Our story, mission and safety standards." },
-      { name: "keywords", content: "NorthGo, North Go, NorthGo Kenya, NorthGo private transport, private transport Kenya, Isiolo Nairobi transport" },
+      { name: "keywords", content: "NorthGo booking, North Go booking, NorthGo, North Go, NorthGo Kenya, NorthGo private transport, private transport Kenya, Isiolo Nairobi transport" },
       { property: "og:title", content: "About NorthGo — Private Transport Isiolo ⇄ Nairobi" },
       { property: "og:description", content: "Verified drivers, fair fares and reliable daily private transport between Isiolo and Nairobi." },
       { property: "og:url", content: URL },

@@ -12,7 +12,7 @@ const URL = "https://north-go-route.lovable.app/drivers";
 export const Route = createFileRoute("/drivers")({
   head: () => ({
     meta: [
-      { title: "Verified NorthGo Drivers — Isiolo ⇄ Nairobi | NorthGo" },
+      { title: "Verified NorthGo Drivers — Isiolo ⇄ Nairobi NorthGo Booking" },
       {
         name: "description",
         content:
