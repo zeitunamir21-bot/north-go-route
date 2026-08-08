@@ -174,11 +174,7 @@ function Home() {
       {/* RECENT + POPULAR */}
       <RecentAndPopular />
 
-      {/* STATS */}
-      <StatsRow />
 
-      {/* TRUST BADGES */}
-      <TrustBadges />
 
       {/* WHY US */}
       <section className="mx-auto max-w-6xl px-4 py-16">
