@@ -205,8 +205,8 @@ function Home() {
         </div>
       </section>
 
-      {/* ROUTE INFO */}
-      <RouteInfo />
+
+
 
       {/* TRIPS PREVIEW */}
       <section className="mx-auto max-w-6xl px-4 py-16">
