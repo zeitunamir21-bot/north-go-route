@@ -58,10 +58,45 @@ function AboutPage() {
             </div>
           ))}
         </div>
+
+        <h2 className="mt-14 font-display text-3xl font-bold tracking-tight">What we do</h2>
+        <p className="mt-3 text-muted-foreground">
+          NorthGo is an online booking platform for private road transport between Isiolo and
+          Nairobi. Passengers browse daily departures, pick an exact seat, and reserve without
+          paying anything upfront — the fare is settled with the driver on board, in cash or by
+          M-Pesa. Drivers who own a 7-seater Sienta can join, publish their own departure times,
+          and manage their bookings from a dashboard.
+        </p>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          {[
+            { title: "Daily scheduled seats", body: "Morning and evening departures in both directions, with live seat availability on every listing." },
+            { title: "Group and charter trips", body: "Book several seats together, or arrange a full-vehicle trip by calling the driver directly from the listing." },
+            { title: "Verified drivers", body: "Every driver is reviewed and approved before their trips go live. Vehicle name, plate number and passenger ratings are shown publicly." },
+            { title: "Support after booking", body: "Contact us about bookings, lost items, payments, or to report driver misconduct — we follow up on every report." },
+          ].map((s) => (
+            <div key={s.title} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <h3 className="font-display text-lg font-bold">{s.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{s.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="mt-14 font-display text-3xl font-bold tracking-tight">How booking works</h2>
+        <ol className="mt-4 space-y-3 text-muted-foreground">
+          <li><strong className="text-foreground">1. Pick a trip.</strong> Choose a departure date, time and direction from the trips page.</li>
+          <li><strong className="text-foreground">2. Choose your seat.</strong> The seat map shows exactly which seats are still free.</li>
+          <li><strong className="text-foreground">3. Confirm.</strong> Enter your name and phone number — your seat is held instantly.</li>
+          <li><strong className="text-foreground">4. Travel and pay on board.</strong> Meet the driver at the pickup point and pay in cash or via M-Pesa.</li>
+        </ol>
       </section>
 
       <StatsRow />
       <TrustBadges />
+      <RouteInfo />
+      <FAQ />
+
+
 
       <section className="mx-auto max-w-4xl px-4 pb-20 text-center">
         <h2 className="font-display text-3xl font-bold">Ready to ride?</h2>
