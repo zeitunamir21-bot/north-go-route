@@ -9,11 +9,8 @@ import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { RecentAndPopular } from "@/components/RecentAndPopular";
-import { StatsRow } from "@/components/StatsRow";
-import { TrustBadges } from "@/components/TrustBadges";
-import { RouteInfo } from "@/components/RouteInfo";
-import { FAQ } from "@/components/FAQ";
 import { ContactSupport } from "@/components/ContactSupport";
+
 import { BottomNav } from "@/components/BottomNav";
 import { StickyBookCTA } from "@/components/StickyBookCTA";
 import { PromoBanner } from "@/components/PromoBanner";
