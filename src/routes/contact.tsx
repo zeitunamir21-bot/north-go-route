@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
     meta: [
       { title: "Contact NorthGo Support — Private Transport Isiolo ⇄ Nairobi" },
       { name: "description", content: "Contact NorthGo support 7 days a week by email, WhatsApp or phone for private transport bookings, complaints, lost items and payment issues." },
-      { name: "keywords", content: "NorthGo support, NorthGo Kenya contact, NorthGo transport booking help, private transport Kenya" },
+      { name: "keywords", content: "NorthGo booking support, North Go booking help, NorthGo support, NorthGo Kenya contact, NorthGo transport booking, private transport Kenya" },
       { property: "og:title", content: "Contact NorthGo Support" },
       { property: "og:description", content: "Email, WhatsApp or call NorthGo for help with Isiolo ⇄ Nairobi private transport bookings." },
       { property: "og:url", content: URL },
