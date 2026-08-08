@@ -233,7 +233,7 @@ function Home() {
       </section>
 
       <ReviewsSection />
-      <FAQ />
+
 
       {/* DRIVER SIGNUP */}
       <section className="mx-auto max-w-6xl px-4 pb-4">
