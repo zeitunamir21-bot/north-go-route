@@ -4,6 +4,8 @@ import { Footer } from "@/components/Footer";
 import { BottomNav } from "@/components/BottomNav";
 import { StatsRow } from "@/components/StatsRow";
 import { TrustBadges } from "@/components/TrustBadges";
+import { RouteInfo } from "@/components/RouteInfo";
+import { FAQ } from "@/components/FAQ";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Heart, Users, Compass } from "lucide-react";
 
@@ -13,8 +15,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About NorthGo — Private Transport Isiolo ⇄ Nairobi, Kenya" },
-      { name: "description", content: "NorthGo Kenya connects travellers with verified drivers for private transport between Isiolo and Nairobi. Our story, mission and safety standards." },
-      { name: "keywords", content: "NorthGo booking, North Go booking, NorthGo, North Go, NorthGo Kenya, NorthGo private transport, private transport Kenya, Isiolo Nairobi transport" },
+      { name: "description", content: "NorthGo connects travellers with verified drivers for private transport between Isiolo and Nairobi. Our story, services, route details and safety standards." },
       { property: "og:title", content: "About NorthGo — Private Transport Isiolo ⇄ Nairobi" },
       { property: "og:description", content: "Verified drivers, fair fares and reliable daily private transport between Isiolo and Nairobi." },
       { property: "og:url", content: URL },
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/about")({
   }),
   component: AboutPage,
 });
+
 
 function AboutPage() {
   return (
