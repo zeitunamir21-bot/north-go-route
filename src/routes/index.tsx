@@ -62,7 +62,7 @@ export const Route = createFileRoute("/")({
               serviceType: "Private transport booking",
               provider: { "@id": "https://north-go-route.lovable.app/#organization" },
               areaServed: ["Isiolo", "Nairobi", "Kenya"],
-              offers: { "@type": "Offer", price: "1300", priceCurrency: "KES", url: "https://north-go-route.lovable.app/trips" },
+              url: "https://north-go-route.lovable.app/trips",
             },
           ],
         }),
@@ -153,10 +153,10 @@ function Home() {
 
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/85">
               {[
-                "Daily Trips",
-                "Live Seat Availability",
-                "Verified Drivers",
-                "Pay on Board",
+                "Verified drivers",
+                "Live seat availability",
+                "Favourable fares",
+                "Pay on board",
               ].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary" />

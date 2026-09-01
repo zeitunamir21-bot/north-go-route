@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "How much is a ticket between Isiolo and Nairobi?",
-    a: "Standard fare is KES 1,300 per seat, payable on board in cash or via M-Pesa to the driver. Pricing may vary per trip and is shown on each listing.",
+    a: "Fares are set per trip and shown on each listing before you book. Pricing is favourable and you pay on board in cash or via M-Pesa to the driver.",
   },
   {
     q: "Where is the pickup point in Isiolo?",
