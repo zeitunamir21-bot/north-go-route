@@ -15,6 +15,7 @@ import { BottomNav } from "@/components/BottomNav";
 import { StickyBookCTA } from "@/components/StickyBookCTA";
 import { PromoBanner } from "@/components/PromoBanner";
 import { DownloadApkButton } from "@/components/DownloadApkButton";
+import { RouteFlow } from "@/components/RouteFlow";
 
 import heroImg from "@/assets/hero-van.jpg";
 
@@ -167,6 +168,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* ROUTE FLOW */}
+      <RouteFlow />
 
       {/* RECENT + POPULAR */}
       <RecentAndPopular />

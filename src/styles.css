@@ -211,6 +211,21 @@
 }
 .seat-pop { animation: seat-pop 240ms var(--motion-emphasized); }
 
+/* Route flow: moving cars both ways */
+.flow-dot { opacity: 0.9; }
+.flow-east { animation: flow-east 2.4s linear infinite; }
+.flow-west { animation: flow-west 2.4s linear infinite; }
+
+@keyframes flow-east {
+  from { transform: translateX(-160%); }
+  to { transform: translateX(calc(100% + 160%)); }
+}
+
+@keyframes flow-west {
+  from { transform: translateX(calc(100% + 160%)); }
+  to { transform: translateX(-160%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .screen-enter, .seat-pop, .m3-ripple-wave { animation: none !important; }
+  .screen-enter, .seat-pop, .m3-ripple-wave, .flow-east, .flow-west { animation: none !important; }
 }
