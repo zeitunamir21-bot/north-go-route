@@ -16,7 +16,7 @@ export function RouteInfo() {
         <Card icon={MapPin} title="Pickup in Isiolo" lines={["Total Petrol Station", "A2 Highway, Isiolo Town"]} />
         <Card icon={MapPin} title="Drop-off in Nairobi" lines={["Tea Room / River Road", "Eastleigh and town stops on request"]} />
         <Card icon={Clock} title="Travel time" lines={["≈ 4h 30m direct", "Daily departures, morning & evening"]} />
-        <Card icon={Wallet} title="Fare" lines={["KES 1,300 per seat", "Pay cash or M-Pesa on board"]} />
+        <Card icon={Wallet} title="Fare" lines={["Favourable fares", "Pay cash or M-Pesa on board"]} />
         <Card icon={MapPin} title="Major stops" lines={["Nanyuki · Karatina · Sagana", "Thika · Nairobi CBD"]} />
         <Card icon={Clock} title="Best times" lines={["6:30 AM, 9:00 AM", "2:00 PM, 6:00 PM"]} />
       </div>

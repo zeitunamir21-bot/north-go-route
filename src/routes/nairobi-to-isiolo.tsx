@@ -15,7 +15,7 @@ export const Route = createFileRoute("/nairobi-to-isiolo")({
   head: () => ({
     meta: [
       { title: "Nairobi to Isiolo NorthGo Booking — Private Transport Kenya" },
-      { name: "description", content: "Book Nairobi to Isiolo private transport with NorthGo. Daily 7-seater Sienta trips on the A2 highway, verified Kenyan drivers, KES 1,300, pay on board." },
+      { name: "description", content: "Book Nairobi to Isiolo private transport with NorthGo. Daily 7-seater Sienta trips on the A2 highway, verified Kenyan drivers, favourable fares, pay on board." },
       { name: "keywords", content: "Nairobi to Isiolo NorthGo booking, NorthGo booking, North Go booking, NorthGo Nairobi booking, Nairobi Isiolo transport, private transport Nairobi, NorthGo private transport, private transport Kenya" },
       { property: "og:title", content: "Nairobi to Isiolo — NorthGo Private Transport Booking" },
       { property: "og:description", content: "Daily Nairobi to Isiolo private transport. Verified drivers, real seat availability, pay on board." },
@@ -33,7 +33,6 @@ export const Route = createFileRoute("/nairobi-to-isiolo")({
           serviceType: "Intercity 7-seater Sienta transport",
           areaServed: ["Nairobi", "Isiolo", "Kenya"],
           provider: { "@type": "Organization", name: "NorthGo" },
-          offers: { "@type": "Offer", price: "1300", priceCurrency: "KES" },
         }),
       },
     ],
@@ -66,7 +65,7 @@ function Page() {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <Spec icon={Clock} title="≈ 4h 30m" sub="Direct travel time" />
-          <Spec icon={Wallet} title="KES 1,300" sub="Per seat, pay on board" />
+          <Spec icon={Wallet} title="Favourable fares" sub="Set per trip, pay on board" />
           <Spec icon={MapPin} title="Tea Room / River Road" sub="Standard Nairobi pickup" />
         </div>
 
