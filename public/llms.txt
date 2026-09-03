@@ -1,0 +1,16 @@
+# NorthGo
+
+> NorthGo is a private transport booking platform for the Isiolo ⇄ Nairobi route in Kenya. Passengers book seats on 7-seater Sienta vehicles with verified drivers, live seat availability and favourable fares.
+
+NorthGo offers daily morning and evening departures in both directions. Booking takes about 30 seconds — no app or login required, just a name and phone number. Seats are confirmed instantly and payment is made on board.
+
+## Pages
+
+- [Home](/): Book a seat on the next Isiolo ⇄ Nairobi departure.
+- [Trips](/trips): Live list of upcoming departures with seats left, fares and driver details.
+- [Drivers](/drivers): Verified NorthGo drivers, vehicles and passenger ratings.
+- [Isiolo to Nairobi](/isiolo-to-nairobi): Route information and booking for Isiolo → Nairobi travel.
+- [Nairobi to Isiolo](/nairobi-to-isiolo): Route information and booking for Nairobi → Isiolo travel.
+- [About](/about): NorthGo's story, services and how the booking process works.
+- [FAQ](/faq): Answers about fares, luggage, departures, changes and refunds.
+- [Contact](/contact): Support options for bookings, complaints, lost items and payment issues.
