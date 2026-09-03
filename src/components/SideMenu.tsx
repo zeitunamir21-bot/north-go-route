@@ -15,10 +15,16 @@ import {
   History,
   ArrowRight,
   MapPin,
+  MessageCircle,
+  Mail,
 } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { haptic } from "@/lib/native";
 import { cn } from "@/lib/utils";
+import { supportMailto } from "@/components/SupportEmailButton";
+
+const SUPPORT_PHONE = "254790179834";
+const WHATSAPP_TEXT = encodeURIComponent("Hi NorthGo, I need help with a booking.");
 
 type To =
   | "/"
@@ -47,7 +53,18 @@ const MORE: { to: To; label: string; icon: typeof Home }[] = [
   { to: "/admin", label: "Admin", icon: ShieldCheck },
   { to: "/about", label: "About NorthGo", icon: Info },
   { to: "/faq", label: "FAQ", icon: HelpCircle },
-  { to: "/contact", label: "Contact", icon: Phone },
+];
+
+const SUPPORT: { href: string; label: string; icon: typeof Home; external?: boolean }[] = [
+  {
+    href: `https://wa.me/${SUPPORT_PHONE}?text=${WHATSAPP_TEXT}`,
+    label: "WhatsApp support",
+    icon: MessageCircle,
+    external: true,
+  },
+  { href: `tel:+${SUPPORT_PHONE}`, label: "Call support", icon: Phone, external: true },
+  { href: supportMailto(), label: "Email support", icon: Mail, external: true },
+  { href: "/contact", label: "Help & topics", icon: HelpCircle },
 ];
 
 /** Slide-in side menu (drawer) with the full site navigation. */
@@ -84,6 +101,39 @@ export function SideMenu() {
       {isActive(to, exact) && <ArrowRight className="ml-auto h-4 w-4" />}
     </Link>
   );
+
+  const ActionItem = ({
+    href,
+    label,
+    icon: Icon,
+    external,
+  }: {
+    href: string;
+    label: string;
+    icon: typeof Home;
+    external?: boolean;
+  }) => {
+    const linkProps = external
+      ? { target: "_blank", rel: "noreferrer" }
+      : {};
+    return (
+      <a
+        href={href}
+        onClick={() => {
+          haptic("light");
+          setOpen(false);
+        }}
+        {...linkProps}
+        className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-foreground"
+      >
+        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-muted-foreground">
+          <Icon className="h-5 w-5" />
+        </span>
+        {label}
+        {external && <ArrowRight className="ml-auto h-4 w-4 -rotate-45 text-muted-foreground" />}
+      </a>
+    );
+  };
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -133,6 +183,15 @@ export function SideMenu() {
           <nav className="flex flex-col gap-1">
             {MORE.map((item) => (
               <Item key={item.to} {...item} />
+            ))}
+          </nav>
+
+          <p className="px-3 pb-2 pt-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            Support
+          </p>
+          <nav className="flex flex-col gap-1">
+            {SUPPORT.map((item) => (
+              <ActionItem key={item.label} {...item} />
             ))}
           </nav>
         </div>

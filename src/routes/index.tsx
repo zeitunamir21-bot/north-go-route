@@ -9,7 +9,6 @@ import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { RecentAndPopular } from "@/components/RecentAndPopular";
-import { ContactSupport } from "@/components/ContactSupport";
 
 import { BottomNav } from "@/components/BottomNav";
 import { StickyBookCTA } from "@/components/StickyBookCTA";
@@ -287,27 +286,6 @@ function Home() {
         </div>
       </section>
 
-
-      <ContactSupport />
-
-
-      {/* CTA */}
-      <section className="mx-auto max-w-6xl px-4 pb-24">
-        <div
-          className="overflow-hidden rounded-3xl p-10 text-white shadow-[var(--shadow-elevated)] md:p-16"
-          style={{ background: "var(--gradient-primary)" }}
-        >
-          <h2 className="font-display text-4xl font-bold md:text-5xl">
-            Ready to ride? Reserve in 30 seconds.
-          </h2>
-          <p className="mt-3 max-w-xl text-white/90">
-            No app, no login required. Just your name and phone — we'll confirm your seat instantly.
-          </p>
-          <Button asChild size="lg" variant="secondary" className="mt-8 h-14 rounded-xl px-8 text-base font-semibold">
-            <Link to="/trips">Book your seat</Link>
-          </Button>
-        </div>
-      </section>
 
       <Footer />
       <StickyBookCTA />
