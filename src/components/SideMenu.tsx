@@ -53,7 +53,18 @@ const MORE: { to: To; label: string; icon: typeof Home }[] = [
   { to: "/admin", label: "Admin", icon: ShieldCheck },
   { to: "/about", label: "About NorthGo", icon: Info },
   { to: "/faq", label: "FAQ", icon: HelpCircle },
-  { to: "/contact", label: "Contact", icon: Phone },
+];
+
+const SUPPORT: { href: string; label: string; icon: typeof Home; external?: boolean }[] = [
+  {
+    href: `https://wa.me/${SUPPORT_PHONE}?text=${WHATSAPP_TEXT}`,
+    label: "WhatsApp support",
+    icon: MessageCircle,
+    external: true,
+  },
+  { href: `tel:+${SUPPORT_PHONE}`, label: "Call support", icon: Phone, external: true },
+  { href: supportMailto(), label: "Email support", icon: Mail, external: true },
+  { href: "/contact", label: "Help & topics", icon: HelpCircle },
 ];
 
 /** Slide-in side menu (drawer) with the full site navigation. */
