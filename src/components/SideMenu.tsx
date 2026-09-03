@@ -78,7 +78,7 @@ export function SideMenu() {
           isActive(to, exact) ? "bg-primary text-primary-foreground" : "bg-accent text-muted-foreground"
         )}
       >
-        <Icon className="h-4.5 w-4.5 h-5 w-5" />
+        <Icon className="h-5 w-5" />
       </span>
       {label}
       {isActive(to, exact) && <ArrowRight className="ml-auto h-4 w-4" />}
