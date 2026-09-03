@@ -9,7 +9,6 @@ import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { RecentAndPopular } from "@/components/RecentAndPopular";
-import { ContactSupport } from "@/components/ContactSupport";
 
 import { BottomNav } from "@/components/BottomNav";
 import { StickyBookCTA } from "@/components/StickyBookCTA";
