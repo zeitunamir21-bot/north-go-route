@@ -102,6 +102,39 @@ export function SideMenu() {
     </Link>
   );
 
+  const ActionItem = ({
+    href,
+    label,
+    icon: Icon,
+    external,
+  }: {
+    href: string;
+    label: string;
+    icon: typeof Home;
+    external?: boolean;
+  }) => {
+    const linkProps = external
+      ? { target: "_blank", rel: "noreferrer" }
+      : {};
+    return (
+      <a
+        href={href}
+        onClick={() => {
+          haptic("light");
+          setOpen(false);
+        }}
+        {...linkProps}
+        className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-foreground"
+      >
+        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-muted-foreground">
+          <Icon className="h-5 w-5" />
+        </span>
+        {label}
+        {external && <ArrowRight className="ml-auto h-4 w-4 -rotate-45 text-muted-foreground" />}
+      </a>
+    );
+  };
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
