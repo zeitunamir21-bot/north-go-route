@@ -205,12 +205,47 @@ function Home() {
 
 
 
+      {/* BOOK A TRIP */}
+      <section className="mx-auto max-w-6xl px-4 pt-16">
+        <div className="mb-8 max-w-2xl">
+          <h2 className="font-display text-4xl font-bold tracking-tight">Book your trip</h2>
+          <p className="mt-2 text-muted-foreground">
+            Choose your direction — cars run both ways, morning and evening.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {[
+            { from: "Isiolo", to: "Nairobi", note: "Morning & evening departures" },
+            { from: "Nairobi", to: "Isiolo", note: "Morning & evening departures" },
+          ].map((r) => (
+            <Link
+              key={`${r.from}-${r.to}`}
+              to="/trips"
+              className="m3-card m3-press m3-ripple group flex items-center gap-4 p-6"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent text-primary">
+                <Car className="h-6 w-6" />
+              </span>
+              <span className="flex-1">
+                <span className="block font-display text-lg font-bold">
+                  {r.from} <ArrowRight className="inline h-4 w-4 text-primary" /> {r.to}
+                </span>
+                <span className="block text-sm text-muted-foreground">{r.note}</span>
+              </span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:translate-x-1">
+                <ArrowRight className="h-5 w-5" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* TRIPS PREVIEW */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="mb-8 flex items-end justify-between">
           <div>
             <h2 className="font-display text-4xl font-bold tracking-tight">Upcoming trips</h2>
-            <p className="mt-2 text-muted-foreground">Pick a departure that works for you.</p>
+            <p className="mt-2 text-muted-foreground">Pick a departure and reserve your seat.</p>
           </div>
           <Button asChild variant="ghost" className="hidden md:inline-flex">
             <Link to="/trips">
