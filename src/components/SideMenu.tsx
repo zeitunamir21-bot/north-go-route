@@ -185,6 +185,15 @@ export function SideMenu() {
               <Item key={item.to} {...item} />
             ))}
           </nav>
+
+          <p className="px-3 pb-2 pt-5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            Support
+          </p>
+          <nav className="flex flex-col gap-1">
+            {SUPPORT.map((item) => (
+              <ActionItem key={item.label} {...item} />
+            ))}
+          </nav>
         </div>
 
         <div className="border-t border-border p-4">
