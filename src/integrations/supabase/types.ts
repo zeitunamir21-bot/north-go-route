@@ -73,6 +73,53 @@ export type Database = {
           },
         ]
       }
+      driver_documents: {
+        Row: {
+          created_at: string
+          doc_type: string
+          driver_id: string
+          file_name: string | null
+          file_path: string
+          id: string
+          notes: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          doc_type: string
+          driver_id: string
+          file_name?: string | null
+          file_path: string
+          id?: string
+          notes?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          doc_type?: string
+          driver_id?: string
+          file_name?: string | null
+          file_path?: string
+          id?: string
+          notes?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "driver_documents_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       drivers: {
         Row: {
           approved_at: string | null
