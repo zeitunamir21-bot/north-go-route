@@ -32,6 +32,7 @@ import { Route as DriverDriverIdRouteImport } from './routes/driver.$driverId'
 import { Route as BookingBookingIdRouteImport } from './routes/booking.$bookingId'
 import { Route as BookTripIdRouteImport } from './routes/book.$tripId'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as ApiPublicNorthgoApkRouteImport } from './routes/api/public/northgo-apk'
 
 const TripsRoute = TripsRouteImport.update({
   id: '/trips',
@@ -148,6 +149,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicNorthgoApkRoute = ApiPublicNorthgoApkRouteImport.update({
+  id: '/api/public/northgo-apk',
+  path: '/api/public/northgo-apk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/driver/signup': typeof DriverSignupRoute
   '/admin/': typeof AdminIndexRoute
   '/driver/': typeof DriverIndexRoute
+  '/api/public/northgo-apk': typeof ApiPublicNorthgoApkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -198,6 +205,7 @@ export interface FileRoutesByTo {
   '/driver/signup': typeof DriverSignupRoute
   '/admin': typeof AdminIndexRoute
   '/driver': typeof DriverIndexRoute
+  '/api/public/northgo-apk': typeof ApiPublicNorthgoApkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -224,6 +232,7 @@ export interface FileRoutesById {
   '/driver/signup': typeof DriverSignupRoute
   '/admin/': typeof AdminIndexRoute
   '/driver/': typeof DriverIndexRoute
+  '/api/public/northgo-apk': typeof ApiPublicNorthgoApkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/driver/signup'
     | '/admin/'
     | '/driver/'
+    | '/api/public/northgo-apk'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -276,6 +286,7 @@ export interface FileRouteTypes {
     | '/driver/signup'
     | '/admin'
     | '/driver'
+    | '/api/public/northgo-apk'
   id:
     | '__root__'
     | '/'
@@ -301,6 +312,7 @@ export interface FileRouteTypes {
     | '/driver/signup'
     | '/admin/'
     | '/driver/'
+    | '/api/public/northgo-apk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -327,6 +339,7 @@ export interface RootRouteChildren {
   DriverSignupRoute: typeof DriverSignupRoute
   AdminIndexRoute: typeof AdminIndexRoute
   DriverIndexRoute: typeof DriverIndexRoute
+  ApiPublicNorthgoApkRoute: typeof ApiPublicNorthgoApkRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -492,6 +505,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/northgo-apk': {
+      id: '/api/public/northgo-apk'
+      path: '/api/public/northgo-apk'
+      fullPath: '/api/public/northgo-apk'
+      preLoaderRoute: typeof ApiPublicNorthgoApkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -519,6 +539,7 @@ const rootRouteChildren: RootRouteChildren = {
   DriverSignupRoute: DriverSignupRoute,
   AdminIndexRoute: AdminIndexRoute,
   DriverIndexRoute: DriverIndexRoute,
+  ApiPublicNorthgoApkRoute: ApiPublicNorthgoApkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
