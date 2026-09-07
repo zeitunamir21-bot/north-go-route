@@ -22,6 +22,8 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { haptic } from "@/lib/native";
 import { cn } from "@/lib/utils";
 import { supportMailto } from "@/components/SupportEmailButton";
+import { NotificationsToggle } from "@/components/NotificationsToggle";
+
 
 const SUPPORT_PHONE = "254790179834";
 const WHATSAPP_TEXT = encodeURIComponent("Hi NorthGo, I need help with a booking.");
