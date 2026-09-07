@@ -193,7 +193,9 @@ export function SideMenu() {
             {SUPPORT.map((item) => (
               <ActionItem key={item.label} {...item} />
             ))}
+            <NotificationsToggle />
           </nav>
+
         </div>
 
         <div className="border-t border-border p-4">
