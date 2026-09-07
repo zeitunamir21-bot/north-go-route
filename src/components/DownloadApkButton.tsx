@@ -1,9 +1,9 @@
 import { Download } from "lucide-react";
-import apkAsset from "@/assets/northgo.apk.asset.json";
 
-// The signed Android build is hosted on the project's CDN, so the download is
-// same-origin and works from every browser without a GitHub round trip.
-const APK_URL = (import.meta.env.VITE_APK_URL as string | undefined)?.trim() || apkAsset.url;
+// Served through our own endpoint so the file arrives as an installable Android
+// package instead of a generic .zip download.
+const APK_URL = (import.meta.env.VITE_APK_URL as string | undefined)?.trim() || "/api/public/northgo-apk";
+
 
 export function DownloadApkButton({
   variant = "default",
