@@ -1,4 +1,5 @@
 import { Sun, Moon } from "lucide-react";
+import roadVehicles from "@/assets/northgo-road-vehicles.jpeg.asset.json";
 
 export function RouteFlow() {
   return (
@@ -81,6 +82,18 @@ export function RouteFlow() {
           </div>
         </div>
       </div>
+
+      <figure className="mx-auto mt-4 max-w-2xl overflow-hidden rounded-2xl border border-border bg-muted shadow-[var(--shadow-card)]">
+        <img
+          src={roadVehicles.url}
+          alt="NorthGo passenger vehicles stopped along the Isiolo–Nairobi road"
+          width={1290}
+          height={1713}
+          loading="lazy"
+          decoding="async"
+          className="aspect-[4/3] w-full object-cover object-center sm:aspect-[16/7]"
+        />
+      </figure>
     </section>
   );
 }
