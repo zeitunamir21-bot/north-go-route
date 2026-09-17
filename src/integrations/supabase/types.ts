@@ -221,6 +221,7 @@ export type Database = {
       }
       ratings: {
         Row: {
+          booking_id: string | null
           comment: string | null
           created_at: string
           customer_name: string
@@ -230,6 +231,7 @@ export type Database = {
           trip_id: string | null
         }
         Insert: {
+          booking_id?: string | null
           comment?: string | null
           created_at?: string
           customer_name: string
@@ -239,6 +241,7 @@ export type Database = {
           trip_id?: string | null
         }
         Update: {
+          booking_id?: string | null
           comment?: string | null
           created_at?: string
           customer_name?: string
@@ -248,6 +251,13 @@ export type Database = {
           trip_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "ratings_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "ratings_driver_id_fkey"
             columns: ["driver_id"]
@@ -344,6 +354,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_list_ratings: { Args: never; Returns: Json }
       apply_promo: {
         Args: { p_code: string; p_subtotal: number }
         Returns: Json
@@ -380,6 +391,10 @@ export type Database = {
         Returns: Json
       }
       get_my_bookings: { Args: never; Returns: Json }
+      get_my_rateable_bookings: {
+        Args: { p_driver_id?: string }
+        Returns: Json
+      }
       get_platform_stats: { Args: never; Returns: Json }
       get_taken_seats: { Args: { p_trip_id: string }; Returns: number[] }
       get_top_reviews: { Args: { p_limit?: number }; Returns: Json }
@@ -542,6 +557,7 @@ export type Database = {
           p_trip_id: string
         }
         Returns: {
+          booking_id: string | null
           comment: string | null
           created_at: string
           customer_name: string
