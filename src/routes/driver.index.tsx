@@ -203,6 +203,8 @@ function DriverPage() {
 
         {driver && <ProfilePicture driver={driver} onChanged={refetchDriver} />}
 
+        {userId && driver && <DriverDocuments userId={userId} driverId={driver.id} />}
+
         {isApproved && userId && driver && (
           <>
             <ProfileEditor driver={driver} onChanged={refetchDriver} />
