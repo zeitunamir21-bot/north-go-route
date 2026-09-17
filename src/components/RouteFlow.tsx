@@ -89,7 +89,7 @@ export function RouteFlow() {
           alt="NorthGo passenger vehicles stopped along the Isiolo–Nairobi road"
           width={1290}
           height={1713}
-          loading="lazy"
+          loading="eager"
           decoding="async"
           className="aspect-[4/3] w-full object-cover object-center sm:aspect-[16/7]"
         />
