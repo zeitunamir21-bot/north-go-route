@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { CheckCircle2, ImagePlus, Loader2, LogOut, Pencil, Plus, RotateCcw, Trash2, X } from "lucide-react";
 import { formatDateTime, formatKES } from "@/lib/format";
+import { DriverDocuments } from "@/components/DriverDocuments";
 
 export const Route = createFileRoute("/driver/")({
   head: () => ({ meta: [{ title: "Driver dashboard — NorthGo" }] }),
