@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { Loader2, Plus, Trash2, Phone, LogOut, Pencil, Download } from "lucide-react";
 import { formatDateTime, formatKES } from "@/lib/format";
 import { PromoCodesAdmin } from "@/components/PromoCodesAdmin";
+import { AdminDriverDocs } from "@/components/AdminDriverDocs";
 
 export const Route = createFileRoute("/admin/")({
   head: () => ({ meta: [{ title: "Admin Dashboard — NorthGo" }] }),
@@ -381,6 +382,8 @@ function AdminPage() {
             })}
           </div>
         </section>
+
+        <AdminDriverDocs drivers={drivers} />
 
         <PromoCodesAdmin />
       </div>
