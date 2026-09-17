@@ -1,3 +1,3 @@
 # Roadmap
 
-- [ ] Add the uploaded road photo as one of the car images on the homepage.
+- [x] Add the uploaded road photo as one of the car images on the homepage.
