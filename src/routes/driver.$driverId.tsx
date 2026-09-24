@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Car, Clock, MapPin, Hash } from "lucide-react";
@@ -12,7 +13,7 @@ import { formatDateTime, formatKES } from "@/lib/format";
 
 export const Route = createFileRoute("/driver/$driverId")({
   head: ({ params }) => {
-    const url = `https://north-go-route.lovable.app/driver/${params.driverId}`;
+    const url = `${SITE_URL}/driver/${params.driverId}`;
     return {
       meta: [
         { title: "Driver profile — NorthGo" },

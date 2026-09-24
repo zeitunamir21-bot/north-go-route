@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
@@ -7,7 +8,7 @@ import { BottomNav } from "@/components/BottomNav";
 import { DriverCard, type PublicDriver } from "@/components/DriverCard";
 import { ShieldCheck, BadgeCheck, IdCard, ThumbsUp } from "lucide-react";
 
-const URL = "https://north-go-route.lovable.app/drivers";
+const URL = SITE_URL + "/drivers";
 
 export const Route = createFileRoute("/drivers")({
   head: () => ({

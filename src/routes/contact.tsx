@@ -1,10 +1,11 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BottomNav } from "@/components/BottomNav";
 import { ContactSupport } from "@/components/ContactSupport";
 
-const URL = "https://north-go-route.lovable.app/contact";
+const URL = SITE_URL + "/contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -27,8 +28,8 @@ export const Route = createFileRoute("/contact")({
           "@type": "ContactPage",
           name: "Contact NorthGo Support",
           url: URL,
-          isPartOf: { "@id": "https://north-go-route.lovable.app/#website" },
-          about: { "@id": "https://north-go-route.lovable.app/#organization" },
+          isPartOf: { "@id": SITE_URL + "/#website" },
+          about: { "@id": SITE_URL + "/#organization" },
         }),
       },
     ],
