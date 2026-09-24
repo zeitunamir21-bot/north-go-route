@@ -1,0 +1,1 @@
+GRANT EXECUTE ON FUNCTION public.reserve_seats(uuid, text, text, integer, text, text, integer[], uuid) TO anon, authenticated;

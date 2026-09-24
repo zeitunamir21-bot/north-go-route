@@ -14,6 +14,8 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
+    // Never publish readable source maps — keeps the original code private.
+    build: { sourcemap: false },
     plugins: [
       VitePWA({
         registerType: "autoUpdate",
