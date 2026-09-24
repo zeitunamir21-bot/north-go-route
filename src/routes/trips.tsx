@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
@@ -12,7 +13,7 @@ import { PullToRefresh } from "@/components/PullToRefresh";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const TRIPS_URL = "https://north-go-route.lovable.app/trips";
+const TRIPS_URL = SITE_URL + "/trips";
 
 export const Route = createFileRoute("/trips")({
   head: () => ({

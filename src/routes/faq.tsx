@@ -1,10 +1,11 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BottomNav } from "@/components/BottomNav";
 import { FAQ } from "@/components/FAQ";
 
-const URL = "https://north-go-route.lovable.app/faq";
+const URL = SITE_URL + "/faq";
 
 const faqEntries = [
   {

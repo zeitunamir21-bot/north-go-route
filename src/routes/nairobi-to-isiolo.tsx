@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Clock, MapPin, Wallet } from "lucide-react";
@@ -9,7 +10,7 @@ import { TripCard } from "@/components/TripCard";
 import { TrustBadges } from "@/components/TrustBadges";
 import { Button } from "@/components/ui/button";
 
-const URL = "https://north-go-route.lovable.app/nairobi-to-isiolo";
+const URL = SITE_URL + "/nairobi-to-isiolo";
 
 export const Route = createFileRoute("/nairobi-to-isiolo")({
   head: () => ({

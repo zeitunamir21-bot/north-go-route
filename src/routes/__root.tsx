@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -133,11 +134,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://north-go-route.lovable.app/#organization",
+              "@id": SITE_URL + "/#organization",
               name: "NorthGo",
               alternateName: ["North Go", "NorthGo Kenya", "NorthGo Booking", "North Go Booking", "NorthGo Transport"],
-              url: "https://north-go-route.lovable.app",
-              logo: "https://north-go-route.lovable.app/icon-512.png",
+              url: SITE_URL,
+              logo: SITE_URL + "/icon-512.png",
               description:
                 "NorthGo is the official NorthGo booking service for private transport between Isiolo and Nairobi, Kenya, with verified drivers and 7-seater Sienta vehicles. Book online, pay on board.",
               areaServed: { "@type": "Country", name: "Kenya" },
@@ -151,14 +152,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             {
               "@type": "WebSite",
-              "@id": "https://north-go-route.lovable.app/#website",
-              url: "https://north-go-route.lovable.app",
+              "@id": SITE_URL + "/#website",
+              url: SITE_URL,
               name: "NorthGo Booking",
               alternateName: ["NorthGo", "North Go booking"],
-              publisher: { "@id": "https://north-go-route.lovable.app/#organization" },
+              publisher: { "@id": SITE_URL + "/#organization" },
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://north-go-route.lovable.app/trips?q={search_term_string}",
+                target: SITE_URL + "/trips?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             },

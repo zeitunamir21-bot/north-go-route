@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
@@ -18,7 +19,7 @@ import { RouteFlow } from "@/components/RouteFlow";
 
 import heroImg from "@/assets/hero-van.jpg";
 
-const HOME_URL = "https://north-go-route.lovable.app/";
+const HOME_URL = SITE_URL + "/";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,8 +52,8 @@ export const Route = createFileRoute("/")({
               name: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport",
               url: HOME_URL,
               description: "Official NorthGo booking website. Book your Isiolo ⇄ Nairobi seat online: daily 7-seater Sienta private transport, verified Kenyan drivers, pay on board.",
-              isPartOf: { "@id": "https://north-go-route.lovable.app/#website" },
-              about: { "@id": "https://north-go-route.lovable.app/#organization" },
+              isPartOf: { "@id": SITE_URL + "/#website" },
+              about: { "@id": SITE_URL + "/#organization" },
               primaryImageOfPage: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504",
             },
             {
@@ -60,9 +61,9 @@ export const Route = createFileRoute("/")({
               "@id": `${HOME_URL}#booking-service`,
               name: "NorthGo booking — private transport Isiolo ⇄ Nairobi",
               serviceType: "Private transport booking",
-              provider: { "@id": "https://north-go-route.lovable.app/#organization" },
+              provider: { "@id": SITE_URL + "/#organization" },
               areaServed: ["Isiolo", "Nairobi", "Kenya"],
-              url: "https://north-go-route.lovable.app/trips",
+              url: SITE_URL + "/trips",
             },
           ],
         }),

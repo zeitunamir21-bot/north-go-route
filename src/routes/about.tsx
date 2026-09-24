@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -9,7 +10,7 @@ import { FAQ } from "@/components/FAQ";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Heart, Users, Compass } from "lucide-react";
 
-const URL = "https://north-go-route.lovable.app/about";
+const URL = SITE_URL + "/about";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

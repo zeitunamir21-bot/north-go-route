@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
@@ -38,7 +39,7 @@ export const notifyDriverApplication = createServerFn({ method: "POST" })
     const clean = (v: string | null) => (v ?? "").replace(/[\r\n]+/g, " ").slice(0, 120);
     const text = `🚐 New NorthGo driver application\nName: ${clean(driver.full_name)}\nPhone: ${clean(
       driver.phone,
-    )}\nVehicle: ${clean(driver.vehicle_name)}\nReview: https://north-go-route.lovable.app/admin`;
+    )}\nVehicle: ${clean(driver.vehicle_name)}\nReview: ${SITE_URL}/admin`;
     const url = `https://api.callmebot.com/whatsapp.php?phone=${ADMIN_WHATSAPP}&text=${encodeURIComponent(
       text,
     )}&apikey=${apiKey}`;
