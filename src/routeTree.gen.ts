@@ -9,94 +9,34 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as DriversRouteImport } from './routes/drivers'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
-import { Route as HistoryRouteImport } from './routes/history'
-import { Route as IsioloToNairobiRouteImport } from './routes/isiolo-to-nairobi'
-import { Route as MyBookingsRouteImport } from './routes/my-bookings'
-import { Route as NairobiToIsioloRouteImport } from './routes/nairobi-to-isiolo'
-import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as ResetPasswordRouteImport } from './routes/reset-password'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TripsRouteImport } from './routes/trips'
-import { Route as AdminIndexRouteImport } from './routes/admin.index'
-import { Route as AdminLoginRouteImport } from './routes/admin.login'
-import { Route as BookTripIdRouteImport } from './routes/book.$tripId'
-import { Route as BookingBookingIdRouteImport } from './routes/booking.$bookingId'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as NairobiToIsioloRouteImport } from './routes/nairobi-to-isiolo'
+import { Route as MyBookingsRouteImport } from './routes/my-bookings'
+import { Route as IsioloToNairobiRouteImport } from './routes/isiolo-to-nairobi'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as DriversRouteImport } from './routes/drivers'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
-import { Route as DriverDriverIdRouteImport } from './routes/driver.$driverId'
-import { Route as DriverLoginRouteImport } from './routes/driver.login'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as DriverSignupRouteImport } from './routes/driver.signup'
+import { Route as DriverLoginRouteImport } from './routes/driver.login'
+import { Route as DriverDriverIdRouteImport } from './routes/driver.$driverId'
+import { Route as BookingBookingIdRouteImport } from './routes/booking.$bookingId'
+import { Route as BookTripIdRouteImport } from './routes/book.$tripId'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as ApiPublicNorthgoApkRouteImport } from './routes/api/public/northgo-apk'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DriversRoute = DriversRouteImport.update({
-  id: '/drivers',
-  path: '/drivers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
-  id: '/forgot-password',
-  path: '/forgot-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HistoryRoute = HistoryRouteImport.update({
-  id: '/history',
-  path: '/history',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IsioloToNairobiRoute = IsioloToNairobiRouteImport.update({
-  id: '/isiolo-to-nairobi',
-  path: '/isiolo-to-nairobi',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MyBookingsRoute = MyBookingsRouteImport.update({
-  id: '/my-bookings',
-  path: '/my-bookings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NairobiToIsioloRoute = NairobiToIsioloRouteImport.update({
-  id: '/nairobi-to-isiolo',
-  path: '/nairobi-to-isiolo',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResetPasswordRoute = ResetPasswordRouteImport.update({
-  id: '/reset-password',
-  path: '/reset-password',
+const TripsRoute = TripsRouteImport.update({
+  id: '/trips',
+  path: '/trips',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -104,29 +44,69 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TripsRoute = TripsRouteImport.update({
-  id: '/trips',
-  path: '/trips',
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/admin/',
-  path: '/admin/',
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/admin/login',
-  path: '/admin/login',
+const NairobiToIsioloRoute = NairobiToIsioloRouteImport.update({
+  id: '/nairobi-to-isiolo',
+  path: '/nairobi-to-isiolo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BookTripIdRoute = BookTripIdRouteImport.update({
-  id: '/book/$tripId',
-  path: '/book/$tripId',
+const MyBookingsRoute = MyBookingsRouteImport.update({
+  id: '/my-bookings',
+  path: '/my-bookings',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BookingBookingIdRoute = BookingBookingIdRouteImport.update({
-  id: '/booking/$bookingId',
-  path: '/booking/$bookingId',
+const IsioloToNairobiRoute = IsioloToNairobiRouteImport.update({
+  id: '/isiolo-to-nairobi',
+  path: '/isiolo-to-nairobi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriversRoute = DriversRouteImport.update({
+  id: '/drivers',
+  path: '/drivers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DriverIndexRoute = DriverIndexRouteImport.update({
@@ -134,9 +114,14 @@ const DriverIndexRoute = DriverIndexRouteImport.update({
   path: '/driver/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DriverDriverIdRoute = DriverDriverIdRouteImport.update({
-  id: '/driver/$driverId',
-  path: '/driver/$driverId',
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriverSignupRoute = DriverSignupRouteImport.update({
+  id: '/driver/signup',
+  path: '/driver/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DriverLoginRoute = DriverLoginRouteImport.update({
@@ -144,9 +129,24 @@ const DriverLoginRoute = DriverLoginRouteImport.update({
   path: '/driver/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DriverSignupRoute = DriverSignupRouteImport.update({
-  id: '/driver/signup',
-  path: '/driver/signup',
+const DriverDriverIdRoute = DriverDriverIdRouteImport.update({
+  id: '/driver/$driverId',
+  path: '/driver/$driverId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingBookingIdRoute = BookingBookingIdRouteImport.update({
+  id: '/booking/$bookingId',
+  path: '/booking/$bookingId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookTripIdRoute = BookTripIdRouteImport.update({
+  id: '/book/$tripId',
+  path: '/book/$tripId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicNorthgoApkRoute = ApiPublicNorthgoApkRouteImport.update({
@@ -344,95 +344,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/drivers': {
-      id: '/drivers'
-      path: '/drivers'
-      fullPath: '/drivers'
-      preLoaderRoute: typeof DriversRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/forgot-password': {
-      id: '/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof ForgotPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/history': {
-      id: '/history'
-      path: '/history'
-      fullPath: '/history'
-      preLoaderRoute: typeof HistoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/isiolo-to-nairobi': {
-      id: '/isiolo-to-nairobi'
-      path: '/isiolo-to-nairobi'
-      fullPath: '/isiolo-to-nairobi'
-      preLoaderRoute: typeof IsioloToNairobiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/my-bookings': {
-      id: '/my-bookings'
-      path: '/my-bookings'
-      fullPath: '/my-bookings'
-      preLoaderRoute: typeof MyBookingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nairobi-to-isiolo': {
-      id: '/nairobi-to-isiolo'
-      path: '/nairobi-to-isiolo'
-      fullPath: '/nairobi-to-isiolo'
-      preLoaderRoute: typeof NairobiToIsioloRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reset-password': {
-      id: '/reset-password'
-      path: '/reset-password'
-      fullPath: '/reset-password'
-      preLoaderRoute: typeof ResetPasswordRouteImport
+    '/trips': {
+      id: '/trips'
+      path: '/trips'
+      fullPath: '/trips'
+      preLoaderRoute: typeof TripsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -442,39 +358,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/trips': {
-      id: '/trips'
-      path: '/trips'
-      fullPath: '/trips'
-      preLoaderRoute: typeof TripsRouteImport
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/': {
-      id: '/admin/'
-      path: '/admin'
-      fullPath: '/admin/'
-      preLoaderRoute: typeof AdminIndexRouteImport
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/login': {
-      id: '/admin/login'
-      path: '/admin/login'
-      fullPath: '/admin/login'
-      preLoaderRoute: typeof AdminLoginRouteImport
+    '/nairobi-to-isiolo': {
+      id: '/nairobi-to-isiolo'
+      path: '/nairobi-to-isiolo'
+      fullPath: '/nairobi-to-isiolo'
+      preLoaderRoute: typeof NairobiToIsioloRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/book/$tripId': {
-      id: '/book/$tripId'
-      path: '/book/$tripId'
-      fullPath: '/book/$tripId'
-      preLoaderRoute: typeof BookTripIdRouteImport
+    '/my-bookings': {
+      id: '/my-bookings'
+      path: '/my-bookings'
+      fullPath: '/my-bookings'
+      preLoaderRoute: typeof MyBookingsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/booking/$bookingId': {
-      id: '/booking/$bookingId'
-      path: '/booking/$bookingId'
-      fullPath: '/booking/$bookingId'
-      preLoaderRoute: typeof BookingBookingIdRouteImport
+    '/isiolo-to-nairobi': {
+      id: '/isiolo-to-nairobi'
+      path: '/isiolo-to-nairobi'
+      fullPath: '/isiolo-to-nairobi'
+      preLoaderRoute: typeof IsioloToNairobiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/drivers': {
+      id: '/drivers'
+      path: '/drivers'
+      fullPath: '/drivers'
+      preLoaderRoute: typeof DriversRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/driver/': {
@@ -484,11 +456,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/driver/$driverId': {
-      id: '/driver/$driverId'
-      path: '/driver/$driverId'
-      fullPath: '/driver/$driverId'
-      preLoaderRoute: typeof DriverDriverIdRouteImport
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/driver/signup': {
+      id: '/driver/signup'
+      path: '/driver/signup'
+      fullPath: '/driver/signup'
+      preLoaderRoute: typeof DriverSignupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/driver/login': {
@@ -498,11 +477,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/driver/signup': {
-      id: '/driver/signup'
-      path: '/driver/signup'
-      fullPath: '/driver/signup'
-      preLoaderRoute: typeof DriverSignupRouteImport
+    '/driver/$driverId': {
+      id: '/driver/$driverId'
+      path: '/driver/$driverId'
+      fullPath: '/driver/$driverId'
+      preLoaderRoute: typeof DriverDriverIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking/$bookingId': {
+      id: '/booking/$bookingId'
+      path: '/booking/$bookingId'
+      fullPath: '/booking/$bookingId'
+      preLoaderRoute: typeof BookingBookingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book/$tripId': {
+      id: '/book/$tripId'
+      path: '/book/$tripId'
+      fullPath: '/book/$tripId'
+      preLoaderRoute: typeof BookTripIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/northgo-apk': {
