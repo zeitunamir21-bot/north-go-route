@@ -16,6 +16,7 @@ import { StickyBookCTA } from "@/components/StickyBookCTA";
 import { PromoBanner } from "@/components/PromoBanner";
 import { DownloadApkButton } from "@/components/DownloadApkButton";
 import { RouteFlow } from "@/components/RouteFlow";
+import { PrivateHire } from "@/components/PrivateHire";
 
 import heroImg from "@/assets/hero-van.jpg";
 
@@ -171,6 +172,9 @@ function Home() {
 
       {/* ROUTE FLOW */}
       <RouteFlow />
+
+      {/* PRIVATE HIRE */}
+      <PrivateHire />
 
       {/* RECENT + POPULAR */}
       <RecentAndPopular />
