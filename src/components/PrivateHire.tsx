@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { z } from "zod";
-import { CarFront, MessageCircle } from "lucide-react";
+import { CarFront, MessageCircle, Sparkles, Loader2 } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { Textarea } from "@/components/ui/textarea";
+import { draftHireRequest } from "@/lib/hire-ai.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -23,6 +26,28 @@ export function PrivateHire() {
   const [date, setDate] = useState("");
   const [pickup, setPickup] = useState("");
   const [phone, setPhone] = useState("");
+  const [needs, setNeeds] = useState("");
+  const [draft, setDraft] = useState("");
+  const [drafting, setDrafting] = useState(false);
+  const draftFn = useServerFn(draftHireRequest);
+  const routeText = direction === "nairobi-isiolo" ? "Nairobi → Isiolo" : "Isiolo → Nairobi";
+
+  const generate = async () => {
+    if (needs.trim().length < 3) {
+      toast.error("Describe your luggage, stops or other needs first");
+      return;
+    }
+    setDrafting(true);
+    try {
+      const res = await draftFn({ data: { route: routeText, date, pickup, needs: needs.slice(0, 600) } });
+      if (res.ok) setDraft(res.text);
+      else toast.error(res.error);
+    } catch {
+      toast.error("Couldn't write the request. Please try again.");
+    } finally {
+      setDrafting(false);
+    }
+  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,8 +64,11 @@ export function PrivateHire() {
       `Date: ${parsed.data.date}`,
       `Pickup point: ${parsed.data.pickup}`,
       `My phone: ${parsed.data.phone}`,
-    ].join("\n");
-    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank", "noreferrer");
+    ];
+    if (draft.trim()) msg.push("", draft.trim());
+    else if (needs.trim()) msg.push(`Extra needs: ${needs.trim()}`);
+    const text = msg.join("\n");
+    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, "_blank", "noreferrer");
   };
 
   return (
@@ -119,6 +147,34 @@ export function PrivateHire() {
                 className="h-11 rounded-xl"
               />
             </div>
+
+            <div className="grid gap-1.5">
+              <Label htmlFor="hire-needs">Extra needs (optional)</Label>
+              <Textarea
+                id="hire-needs"
+                placeholder="e.g. 2 big suitcases, stop in Nanyuki for lunch, leave by 6am"
+                value={needs}
+                maxLength={600}
+                onChange={(e) => setNeeds(e.target.value)}
+                className="min-h-20 rounded-xl"
+              />
+              <Button type="button" variant="outline" onClick={generate} disabled={drafting} className="rounded-xl">
+                {drafting ? <Loader2 className="mr-1 h-4 w-4 animate-spin" /> : <Sparkles className="mr-1 h-4 w-4" />}
+                {drafting ? "Writing your request…" : "Write my request with AI"}
+              </Button>
+            </div>
+
+            {draft && (
+              <div className="grid gap-1.5">
+                <Label htmlFor="hire-draft">Your request (edit if you like)</Label>
+                <Textarea
+                  id="hire-draft"
+                  value={draft}
+                  onChange={(e) => setDraft(e.target.value)}
+                  className="min-h-36 rounded-xl"
+                />
+              </div>
+            )}
 
             <Button type="submit" size="lg" className="mt-1 h-12 rounded-xl text-base font-semibold">
               <MessageCircle className="mr-1 h-5 w-5" /> Request private hire
