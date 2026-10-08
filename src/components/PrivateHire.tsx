@@ -65,9 +65,10 @@ export function PrivateHire() {
       `Pickup point: ${parsed.data.pickup}`,
       `My phone: ${parsed.data.phone}`,
     ];
-    if (draft.trim()) msg.push("", draft.trim());
-    else if (needs.trim()) msg.push(`Extra needs: ${needs.trim()}`);
-    const text = msg.join("\n");
+    if (needs.trim() && !draft.trim()) msg.push(`Extra needs: ${needs.trim()}`);
+    const text = draft.trim()
+      ? [draft.trim(), "", ...msg.slice(1)].join("\n")
+      : msg.join("\n");
     window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, "_blank", "noreferrer");
   };
 
