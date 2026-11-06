@@ -49,7 +49,7 @@ export async function handleChat(request: Request): Promise<Response> {
   const result = streamText({
     model: provider.responses("openai/gpt-6-astra"),
     system: SYSTEM_PROMPT,
-    messages: convertToModelMessages(messages),
+    messages: await convertToModelMessages(messages),
     maxRetries: 0,
     providerOptions: {
       openai: {
