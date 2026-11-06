@@ -14,6 +14,7 @@ import { useCallback, useEffect, useState } from "react";
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
 import { WhatsAppFloating } from "@/components/WhatsAppFloating";
+import { AssistantChat } from "@/components/AssistantChat";
 import { SplashScreen } from "@/components/SplashScreen";
 import { OfflineBanner } from "@/components/OfflineBanner";
 import { PageTransition } from "@/components/PageTransition";
@@ -228,6 +229,7 @@ function RootComponent() {
         <Outlet />
       </PageTransition>
       <WhatsAppFloating />
+      <AssistantChat />
       <Toaster position="top-center" richColors closeButton />
     </QueryClientProvider>
   );

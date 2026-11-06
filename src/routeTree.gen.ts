@@ -26,6 +26,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TripsRouteImport } from './routes/trips'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as BookTripIdRouteImport } from './routes/book.$tripId'
 import { Route as BookingBookingIdRouteImport } from './routes/booking.$bookingId'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
@@ -119,6 +120,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookTripIdRoute = BookTripIdRouteImport.update({
   id: '/book/$tripId',
   path: '/book/$tripId',
@@ -172,6 +178,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trips': typeof TripsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/api/chat': typeof ApiChatRoute
   '/book/$tripId': typeof BookTripIdRoute
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/driver/$driverId': typeof DriverDriverIdRoute
@@ -198,6 +205,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trips': typeof TripsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/api/chat': typeof ApiChatRoute
   '/book/$tripId': typeof BookTripIdRoute
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/driver/$driverId': typeof DriverDriverIdRoute
@@ -225,6 +233,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/trips': typeof TripsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/api/chat': typeof ApiChatRoute
   '/book/$tripId': typeof BookTripIdRoute
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/driver/$driverId': typeof DriverDriverIdRoute
@@ -253,6 +262,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/trips'
     | '/admin/login'
+    | '/api/chat'
     | '/book/$tripId'
     | '/booking/$bookingId'
     | '/driver/$driverId'
@@ -279,6 +289,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/trips'
     | '/admin/login'
+    | '/api/chat'
     | '/book/$tripId'
     | '/booking/$bookingId'
     | '/driver/$driverId'
@@ -305,6 +316,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/trips'
     | '/admin/login'
+    | '/api/chat'
     | '/book/$tripId'
     | '/booking/$bookingId'
     | '/driver/$driverId'
@@ -332,6 +344,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TripsRoute: typeof TripsRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  ApiChatRoute: typeof ApiChatRoute
   BookTripIdRoute: typeof BookTripIdRoute
   BookingBookingIdRoute: typeof BookingBookingIdRoute
   DriverDriverIdRoute: typeof DriverDriverIdRoute
@@ -463,6 +476,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book/$tripId': {
       id: '/book/$tripId'
       path: '/book/$tripId'
@@ -532,6 +552,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TripsRoute: TripsRoute,
   AdminLoginRoute: AdminLoginRoute,
+  ApiChatRoute: ApiChatRoute,
   BookTripIdRoute: BookTripIdRoute,
   BookingBookingIdRoute: BookingBookingIdRoute,
   DriverDriverIdRoute: DriverDriverIdRoute,
