@@ -1,5 +1,5 @@
 import { createOpenAI } from "@ai-sdk/openai";
-import { streamText, type UIMessage } from "ai";
+import { convertToModelMessages, streamText, type UIMessage } from "ai";
 
 const SYSTEM_PROMPT = `You are the NorthGo Transport online assistant. NorthGo runs 7-seater Toyota Sienta vehicles between Isiolo and Nairobi, Kenya, with daily departures both ways, morning and evening.
 
@@ -49,7 +49,7 @@ export async function handleChat(request: Request): Promise<Response> {
   const result = streamText({
     model: provider.responses("openai/gpt-6-astra"),
     system: SYSTEM_PROMPT,
-    messages,
+    messages: convertToModelMessages(messages),
     maxRetries: 0,
     providerOptions: {
       openai: {
