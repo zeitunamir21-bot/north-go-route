@@ -26,7 +26,7 @@ const faqEntries = [
   },
   {
     q: "Are NorthGo drivers verified?",
-    a: "Every driver is approved by our admin team. You can view a driver's profile, vehicle, plate number, and passenger reviews before booking.",
+    a: "Every driver is approved by our admin team. You can view a driver's profile, vehicle and plate number before booking.",
   },
 ];
 

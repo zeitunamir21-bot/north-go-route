@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BottomNav } from "@/components/BottomNav";
 import { DriverCard, type PublicDriver } from "@/components/DriverCard";
-import { ShieldCheck, BadgeCheck, IdCard, ThumbsUp } from "lucide-react";
+import { ShieldCheck, BadgeCheck, IdCard } from "lucide-react";
 
 const URL = SITE_URL + "/drivers";
 
@@ -17,15 +17,15 @@ export const Route = createFileRoute("/drivers")({
       {
         name: "description",
         content:
-          "Before your NorthGo booking, meet our verified Kenyan drivers: ratings, experience, completed trips, languages spoken and 7-seater Sienta vehicle details before you book.",
+          "Meet NorthGo's approved drivers and view their experience, languages, vehicle and trip details before booking.",
       },
-      { property: "og:title", content: "Verified NorthGo Drivers — Isiolo ⇄ Nairobi" },
-      { property: "og:description", content: "Ratings, experience and vehicle details for every verified NorthGo driver." },
+      { property: "og:title", content: "NorthGo Drivers — Isiolo ⇄ Nairobi" },
+      { property: "og:description", content: "Driver profiles, vehicle details and upcoming NorthGo trips." },
       { property: "og:url", content: URL },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Verified NorthGo Drivers" },
-      { name: "twitter:description", content: "Ratings, experience and vehicle details for every verified NorthGo driver." },
+      { name: "twitter:title", content: "NorthGo Drivers" },
+      { name: "twitter:description", content: "Driver profiles, vehicle details and upcoming NorthGo trips." },
     ],
     links: [{ rel: "canonical", href: URL }],
   }),
@@ -36,7 +36,6 @@ const TRUST = [
   { icon: BadgeCheck, title: "Identity verified", desc: "Every driver's ID is checked before approval." },
   { icon: IdCard, title: "Licence verified", desc: "Valid Kenyan driving licence on file." },
   { icon: ShieldCheck, title: "Vehicle verified", desc: "Plate, inspection and vehicle photos reviewed." },
-  { icon: ThumbsUp, title: "Customer recommended", desc: "Ratings come from real, completed bookings." },
 ];
 
 function DriversPage() {
@@ -53,13 +52,12 @@ function DriversPage() {
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">Our verified drivers</h1>
+        <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">NorthGo drivers</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Every NorthGo driver is vetted before they can post a trip. See their rating, experience and vehicle
-          before you reserve a seat.
+          View driver experience, vehicle information and upcoming trips before you reserve a seat.
         </p>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {TRUST.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)]">
               <Icon className="h-5 w-5 text-success" />

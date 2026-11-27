@@ -47,8 +47,6 @@ type PublicTrip = {
   price: number;
   status: string;
   plate_number: string | null;
-  rating_avg: number | null;
-  rating_count: number | null;
 };
 
 const TIME_SLOTS = [
@@ -61,7 +59,6 @@ const TIME_SLOTS = [
 const SORTS = [
   { id: "earliest", label: "Earliest departure" },
   { id: "cheapest", label: "Lowest price" },
-  { id: "rated", label: "Highest rated driver" },
 ] as const;
 
 function inSlot(iso: string, slot: string) {
@@ -120,7 +117,6 @@ function TripsPage() {
     });
     return [...list].sort((a, b) => {
       if (sort === "cheapest") return Number(a.price) - Number(b.price);
-      if (sort === "rated") return Number(b.rating_avg ?? 0) - Number(a.rating_avg ?? 0);
       return new Date(a.departure_time).getTime() - new Date(b.departure_time).getTime();
     });
   }, [trips, q, date, slot, maxPrice, minSeats, sort]);

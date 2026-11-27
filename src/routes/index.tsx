@@ -2,15 +2,13 @@ import { SITE_URL } from "@/lib/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { ArrowRight, Car, Check, Clock, ShieldCheck, Wallet } from "lucide-react";
+import { ArrowRight, Check, ShieldCheck, Wallet } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TripCard } from "@/components/TripCard";
-import { ReviewsSection } from "@/components/ReviewsSection";
 import { RecentAndPopular } from "@/components/RecentAndPopular";
-
 import { BottomNav } from "@/components/BottomNav";
 import { StickyBookCTA } from "@/components/StickyBookCTA";
 import { PromoBanner } from "@/components/PromoBanner";
@@ -18,27 +16,23 @@ import { DownloadApkButton } from "@/components/DownloadApkButton";
 import { RouteFlow } from "@/components/RouteFlow";
 import { PrivateHire } from "@/components/PrivateHire";
 
-import heroImg from "@/assets/hero-van.jpg";
-
 const HOME_URL = SITE_URL + "/";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NorthGo Booking — Isiolo ⇄ Nairobi Private Transport" },
+      { title: "NorthGo Booking — Isiolo ⇄ Nairobi Transport" },
       {
         name: "description",
-        content:
-          "Book a seat between Isiolo and Nairobi in minutes. Live seat availability, verified drivers, pay on board.",
+        content: "Choose Isiolo–Nairobi or Nairobi–Isiolo, check live seat availability, and reserve with NorthGo. Pay on board.",
       },
-
-      { property: "og:title", content: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport" },
-      { property: "og:description", content: "The official NorthGo booking website. Book private transport between Isiolo and Nairobi with live seat availability, verified Kenyan drivers, pay on board." },
+      { property: "og:title", content: "NorthGo Booking — Isiolo ⇄ Nairobi Transport" },
+      { property: "og:description", content: "Choose a route, find a seat, and pay on board with NorthGo." },
       { property: "og:url", content: HOME_URL },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "NorthGo Booking — Isiolo ⇄ Nairobi Private Transport" },
-      { name: "twitter:description", content: "Official NorthGo booking site. Daily private 7-seater Sienta transport, live seat availability, verified drivers." },
+      { name: "twitter:title", content: "NorthGo Booking — Isiolo ⇄ Nairobi Transport" },
+      { name: "twitter:description", content: "Choose a route, find a seat, and pay on board with NorthGo." },
     ],
     links: [{ rel: "canonical", href: HOME_URL }],
     scripts: [
@@ -50,17 +44,16 @@ export const Route = createFileRoute("/")({
             {
               "@type": "WebPage",
               "@id": `${HOME_URL}#webpage`,
-              name: "NorthGo Booking — Official Isiolo ⇄ Nairobi Private Transport",
+              name: "NorthGo Booking — Isiolo ⇄ Nairobi Transport",
               url: HOME_URL,
-              description: "Official NorthGo booking website. Book your Isiolo ⇄ Nairobi seat online: daily 7-seater Sienta private transport, verified Kenyan drivers, pay on board.",
+              description: "Choose a NorthGo route between Isiolo and Nairobi, check available seats, and reserve online.",
               isPartOf: { "@id": SITE_URL + "/#website" },
               about: { "@id": SITE_URL + "/#organization" },
-              primaryImageOfPage: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/23f4e545-2583-4432-990c-1431b6d34504",
             },
             {
               "@type": "Service",
               "@id": `${HOME_URL}#booking-service`,
-              name: "NorthGo booking — private transport Isiolo ⇄ Nairobi",
+              name: "NorthGo private transport booking",
               serviceType: "Private transport booking",
               provider: { "@id": SITE_URL + "/#organization" },
               areaServed: ["Isiolo", "Nairobi", "Kenya"],
@@ -85,7 +78,6 @@ function Home() {
     },
   });
 
-  // Live availability: refresh when any trip changes
   useEffect(() => {
     const channel = supabase
       .channel("home-trips")
@@ -98,199 +90,64 @@ function Home() {
     };
   }, [qc]);
 
-
   return (
-    <div className="min-h-screen bg-background pb-28 md:pb-0">
+    <div className="min-h-screen bg-background pb-32 md:pb-0">
       <PromoBanner />
       <Header />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <img
-          src={heroImg}
-          alt="View from a comfortable 7-seater Sienta traveling toward Mount Kenya at sunrise"
-          width={1600}
-          height={1024}
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "var(--gradient-hero)" }}
-        />
-        <div className="relative mx-auto max-w-6xl px-4 py-24 md:py-36">
-          <div className="max-w-2xl text-white">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Daily private transport · Isiolo ⇄ Nairobi
-            </span>
-            <h1 className="mt-5 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              NorthGo booking — <span className="text-primary">Isiolo ⇄ Nairobi</span> private
-              transport.
-            </h1>
-            <p className="mt-5 max-w-xl text-lg text-white/85">
-              Book a seat in under a minute. Live seat availability, verified drivers, pay on board.
-            </p>
+      <main className="mx-auto max-w-5xl px-4">
+        <section className="pt-5 sm:pt-8">
+          <p className="text-xs font-semibold uppercase text-primary">NorthGo · Isiolo ⇄ Nairobi</p>
+          <h1 className="mt-1 font-display text-2xl font-bold sm:text-3xl">Where are you travelling?</h1>
+          <p className="mt-1 text-sm text-muted-foreground">Choose a direction to see available seats.</p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="h-14 rounded-xl px-8 text-base font-semibold">
-                <Link to="/trips">
-                  Book your seat <ArrowRight className="ml-1 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-14 rounded-xl border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur hover:bg-white/20 hover:text-white"
-              >
-                <a href="tel:+254790179834">Call driver</a>
-              </Button>
-              <DownloadApkButton variant="hero" />
-            </div>
-            <p className="mt-3 text-xs text-white/70">
-              Get the Android app · APK 4 MB · Enable "Install unknown apps" on your phone if prompted.
-            </p>
+          <RouteFlow />
 
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/85">
-              {[
-                "Verified drivers",
-                "Live seat availability",
-                "Favourable fares",
-                "Pay on board",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  {t}
-                </li>
-              ))}
-            </ul>
+          <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+            <Button asChild size="lg" className="h-12 flex-1 rounded-lg text-base font-semibold">
+              <Link to="/trips">
+                Book a seat <ArrowRight className="ml-1 h-5 w-5" />
+              </Link>
+            </Button>
+            <DownloadApkButton variant="compact" className="h-12 justify-center rounded-lg px-4 text-sm" />
           </div>
-        </div>
-      </section>
 
-      {/* ROUTE FLOW */}
-      <RouteFlow />
-
-      {/* PRIVATE HIRE */}
-      <PrivateHire />
-
-      {/* RECENT + POPULAR */}
-      <RecentAndPopular />
-
-
-
-      {/* WHY US */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="mb-12 max-w-2xl">
-          <h2 className="font-display text-4xl font-bold tracking-tight">Why ride with NorthGo</h2>
-          <p className="mt-3 text-muted-foreground">
-            Built for the Isiolo-Nairobi corridor. Simple, honest, and made for everyday travelers.
-          </p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            { icon: Wallet, title: "Pay on board", desc: "Cash or M-Pesa after boarding. No deposits, no risk." },
-            { icon: Clock, title: "Always on time", desc: "Daily departures. We leave when we say we will." },
-            { icon: ShieldCheck, title: "Trusted drivers", desc: "Experienced, vetted, and friendly drivers you can call directly." },
-          ].map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-primary">
-                <Icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-4 font-display text-xl font-bold">{title}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-
-
-
-      {/* BOOK A TRIP */}
-      <section className="mx-auto max-w-6xl px-4 pt-16">
-        <div className="mb-8 max-w-2xl">
-          <h2 className="font-display text-4xl font-bold tracking-tight">Book your trip</h2>
-          <p className="mt-2 text-muted-foreground">
-            Choose your direction — cars run both ways, morning and evening.
-          </p>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {[
-            { from: "Isiolo", to: "Nairobi", note: "Morning & evening departures" },
-            { from: "Nairobi", to: "Isiolo", note: "Morning & evening departures" },
-          ].map((r) => (
-            <Link
-              key={`${r.from}-${r.to}`}
-              to="/trips"
-              className="m3-card m3-press m3-ripple group flex items-center gap-4 p-6"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent text-primary">
-                <Car className="h-6 w-6" />
-              </span>
-              <span className="flex-1">
-                <span className="block font-display text-lg font-bold">
-                  {r.from} <ArrowRight className="inline h-4 w-4 text-primary" /> {r.to}
-                </span>
-                <span className="block text-sm text-muted-foreground">{r.note}</span>
-              </span>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:translate-x-1">
-                <ArrowRight className="h-5 w-5" />
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* TRIPS PREVIEW */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="mb-8 flex items-end justify-between">
-          <div>
-            <h2 className="font-display text-4xl font-bold tracking-tight">Upcoming trips</h2>
-            <p className="mt-2 text-muted-foreground">Pick a departure and reserve your seat.</p>
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-3 text-xs font-medium text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-primary" /> Verified drivers</span>
+            <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" /> Live seat availability</span>
+            <span className="inline-flex items-center gap-1.5"><Wallet className="h-3.5 w-3.5 text-primary" /> Cash or M-Pesa on board</span>
           </div>
-          <Button asChild variant="ghost" className="hidden md:inline-flex">
-            <Link to="/trips">
-              View all <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-        {trips.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-border p-10 text-center text-muted-foreground">
-            No upcoming trips listed yet. Check back soon.
-          </div>
-        ) : (
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {trips.map((t) => <TripCard key={t.id} trip={t} />)}
-          </div>
-        )}
-      </section>
+        </section>
 
-      <ReviewsSection />
+        <RecentAndPopular />
 
-
-      {/* DRIVER SIGNUP */}
-      <section className="mx-auto max-w-6xl px-4 pb-4">
-        <div className="flex flex-col items-start gap-4 rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:flex-row sm:items-center sm:justify-between md:p-8">
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-primary">
-              <Car className="h-5 w-5" />
-            </span>
+        <section className="py-8">
+          <div className="mb-4 flex items-end justify-between gap-3">
             <div>
-              <h2 className="font-display text-xl font-bold">Own a 7-seater?</h2>
-              <p className="text-sm text-muted-foreground">Post your trips and fill your seats.</p>
+              <h2 className="font-display text-xl font-bold sm:text-2xl">Upcoming trips</h2>
+              <p className="mt-1 text-sm text-muted-foreground">Choose a departure and reserve your seat.</p>
             </div>
+            <Button asChild variant="ghost" size="sm" className="shrink-0">
+              <Link to="/trips">All trips <ArrowRight className="ml-1 h-4 w-4" /></Link>
+            </Button>
           </div>
-          <Button asChild size="lg" className="rounded-xl">
-            <Link to="/driver/signup">
-              Become a driver <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+          {trips.length === 0 ? (
+            <div className="rounded-lg border border-border bg-card px-5 py-6">
+              <h3 className="font-display text-lg font-bold">Ready to travel?</h3>
+              <p className="mt-1 text-sm text-muted-foreground">No departures are listed right now. Check the schedule for updates.</p>
+              <Button asChild size="sm" className="mt-4 rounded-lg">
+                <Link to="/trips">Browse trips <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
+            </div>
+          ) : (
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {trips.map((trip) => <TripCard key={trip.id} trip={trip} />)}
+            </div>
+          )}
+        </section>
 
+        <PrivateHire />
+      </main>
 
       <Footer />
       <StickyBookCTA />

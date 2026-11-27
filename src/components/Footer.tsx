@@ -1,67 +1,17 @@
 import { Link } from "@tanstack/react-router";
-import { Mail } from "lucide-react";
-import { supportMailto } from "@/components/SupportEmailButton";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-border bg-secondary text-secondary-foreground">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-4">
-        <div>
-          <h3 className="font-display text-2xl font-bold">
-            North<span className="text-primary">Go</span>
-          </h3>
-          <p className="mt-2 text-sm text-secondary-foreground/70">
-            Comfortable, reliable rides between Isiolo and Nairobi. Reserve your seat in minutes.
-          </p>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-secondary-foreground/60">
-            Routes
-          </h4>
-          <Link to="/isiolo-to-nairobi" className="mt-3 block text-sm hover:text-primary">
-            Isiolo → Nairobi
-          </Link>
-          <Link to="/nairobi-to-isiolo" className="block text-sm hover:text-primary">
-            Nairobi → Isiolo
-          </Link>
-          <Link to="/trips" className="block text-sm text-secondary-foreground/70 hover:text-primary">
-            All trips
-          </Link>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-secondary-foreground/60">
-            Company
-          </h4>
-          <Link to="/about" className="mt-3 block text-sm hover:text-primary">About</Link>
-          <Link to="/faq" className="block text-sm hover:text-primary">FAQ</Link>
-          <Link to="/contact" className="block text-sm hover:text-primary">Contact</Link>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-secondary-foreground/60">
-            Contact
-          </h4>
-          <a href="tel:+254790179834" className="mt-3 block text-sm hover:text-primary">
-            +254 790 179 834
-          </a>
-          <a
-            href="https://wa.me/254790179834"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-sm text-secondary-foreground/70 hover:text-primary"
-          >
-            WhatsApp support
-          </a>
-          <a
-            href={supportMailto()}
-            aria-label="Email NorthGo support"
-            className="mt-1 inline-flex items-center gap-2 text-sm text-secondary-foreground/70 hover:text-primary"
-          >
-            <Mail className="h-4 w-4" aria-hidden="true" /> Email support
-          </a>
-        </div>
-      </div>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-secondary-foreground/60">
-        © {new Date().getFullYear()} NorthGo. All rights reserved.
+    <footer className="mt-8 border-t border-border bg-background">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-5 text-xs text-muted-foreground">
+        <span className="font-display text-sm font-bold text-foreground">NorthGo</span>
+        <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Link to="/trips" className="transition hover:text-primary">Trips</Link>
+          <Link to="/about" className="transition hover:text-primary">About</Link>
+          <Link to="/faq" className="transition hover:text-primary">Help</Link>
+          <Link to="/contact" className="transition hover:text-primary">Contact</Link>
+        </nav>
+        <span>© {new Date().getFullYear()} NorthGo</span>
       </div>
     </footer>
   );

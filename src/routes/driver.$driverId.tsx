@@ -8,7 +8,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { StarRating } from "@/components/StarRating";
 import { formatDateTime, formatKES } from "@/lib/format";
 
 export const Route = createFileRoute("/driver/$driverId")({
@@ -19,12 +18,12 @@ export const Route = createFileRoute("/driver/$driverId")({
         { title: "Driver profile — NorthGo" },
         {
           name: "description",
-          content: "View driver details, vehicle, reviews and upcoming trips.",
+          content: "View a NorthGo driver's profile, vehicle details and upcoming Isiolo–Nairobi trips.",
         },
-        { property: "og:title", content: "Driver profile — NorthGo" },
+        { property: "og:title", content: "NorthGo Driver Profile" },
         {
           property: "og:description",
-          content: "View driver details, vehicle, reviews and upcoming trips.",
+          content: "Driver profile, vehicle details and upcoming NorthGo trips.",
         },
         { property: "og:type", content: "profile" },
         { property: "og:url", content: url },
@@ -45,14 +44,6 @@ type ProfilePayload = {
     plate_number: string | null;
     photos: string[];
   };
-  rating: { avg: number; count: number };
-  reviews: Array<{
-    id: string;
-    customer_name: string;
-    stars: number;
-    comment: string | null;
-    created_at: string;
-  }>;
   upcoming_trips: Array<{
     id: string;
     route: string;
@@ -105,7 +96,7 @@ function DriverProfilePage() {
     );
   }
 
-  const { driver, rating, reviews, upcoming_trips } = data;
+  const { driver, upcoming_trips } = data;
   const photo = driver.photos?.[0];
 
   return (
@@ -136,17 +127,6 @@ function DriverProfilePage() {
                 {driver.full_name}
               </h1>
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                {rating.count > 0 ? (
-                  <div className="flex items-center gap-1.5">
-                    <StarRating value={rating.avg} readOnly size={18} />
-                    <span className="text-sm font-semibold">{rating.avg.toFixed(1)}</span>
-                    <span className="text-sm text-muted-foreground">
-                      ({rating.count} review{rating.count > 1 ? "s" : ""})
-                    </span>
-                  </div>
-                ) : (
-                  <span className="text-sm text-muted-foreground">No reviews yet</span>
-                )}
                 <Badge variant="outline" className="gap-1">
                   <Car className="h-3.5 w-3.5" /> {driver.vehicle_name}
                 </Badge>
@@ -218,34 +198,6 @@ function DriverProfilePage() {
           )}
         </section>
 
-        {/* REVIEWS */}
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold">
-            Reviews {rating.count > 0 && <span className="text-muted-foreground">({rating.count})</span>}
-          </h2>
-          {reviews.length === 0 ? (
-            <div className="mt-4 rounded-2xl border border-dashed border-border p-8 text-center text-muted-foreground">
-              No reviews yet. Be the first after your trip.
-            </div>
-          ) : (
-            <div className="mt-4 grid gap-3 md:grid-cols-2">
-              {reviews.map((r) => (
-                <div key={r.id} className="rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold">{r.customer_name}</span>
-                    <StarRating value={r.stars} readOnly size={14} />
-                  </div>
-                  {r.comment && (
-                    <p className="mt-2 text-sm text-foreground/85">"{r.comment}"</p>
-                  )}
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    {new Date(r.created_at).toLocaleDateString()}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
       </div>
       <Footer />
     </div>

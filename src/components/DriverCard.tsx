@@ -6,8 +6,6 @@ import {
   IdCard,
   Languages,
   ShieldCheck,
-  Star,
-  ThumbsUp,
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,8 +25,6 @@ export type PublicDriver = {
   vehicle_year: number | null;
   seat_capacity: number | null;
   member_since: string;
-  rating_avg: number | null;
-  rating_count: number | null;
   completed_trips: number | null;
   upcoming_trips: number | null;
   status: "available" | "on_trip" | "offline";
@@ -44,7 +40,6 @@ const TRUST = [
   { icon: BadgeCheck, label: "Identity verified" },
   { icon: IdCard, label: "Licence verified" },
   { icon: Car, label: "Vehicle verified" },
-  { icon: ThumbsUp, label: "Customer recommended" },
 ];
 
 export function DriverCard({ driver }: { driver: PublicDriver }) {
@@ -53,7 +48,6 @@ export function DriverCard({ driver }: { driver: PublicDriver }) {
   const years =
     driver.experience_years ??
     Math.max(1, new Date().getFullYear() - new Date(driver.member_since).getFullYear());
-  const rating = Number(driver.rating_avg ?? 0);
   const languages = driver.languages?.length ? driver.languages : ["English", "Kiswahili"];
 
   return (
@@ -84,14 +78,6 @@ export function DriverCard({ driver }: { driver: PublicDriver }) {
             </span>
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-            {(driver.rating_count ?? 0) > 0 ? (
-              <span className="inline-flex items-center gap-1">
-                <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
-                <span className="font-semibold text-foreground">{rating.toFixed(1)}</span>({driver.rating_count})
-              </span>
-            ) : (
-              <span>New driver</span>
-            )}
             <span className="inline-flex items-center gap-1">
               <Clock className="h-3.5 w-3.5" /> {years} yr{years > 1 ? "s" : ""} experience
             </span>

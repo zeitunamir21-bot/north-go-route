@@ -1,89 +1,47 @@
-import { Sun, Moon } from "lucide-react";
+import { ArrowRight, Moon, Sun } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import roadVehicles from "@/assets/northgo-road-vehicles.jpeg.asset.json";
 
 export function RouteFlow() {
+  const routes = [
+    { from: "Isiolo", to: "Nairobi", href: "/isiolo-to-nairobi" as const },
+    { from: "Nairobi", to: "Isiolo", href: "/nairobi-to-isiolo" as const },
+  ];
+
   return (
-    <section className="mx-auto max-w-6xl px-4 py-10">
-      <div className="mx-auto max-w-2xl overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-[var(--shadow-card)] sm:p-6">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex flex-col">
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-              From
-            </span>
-            <span className="font-display text-xl font-bold sm:text-2xl">Isiolo</span>
-          </div>
-
-          <div className="flex min-w-0 flex-1 flex-col items-center px-2">
-            {/* Isiolo → Nairobi flow */}
-            <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-muted">
-              <span className="flow-dot flow-east absolute top-0 h-full w-5 rounded-full bg-primary" />
-              <span className="flow-dot flow-east absolute top-0 h-full w-4 rounded-full bg-primary/70 [animation-delay:-1.2s]" />
-              <span className="flow-dot flow-east absolute top-0 h-full w-3 rounded-full bg-primary/45 [animation-delay:-2.4s]" />
-              <svg
-                className="absolute right-1 top-1/2 h-3 w-3 -translate-y-1/2 text-primary"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-
-            <div className="my-1.5 rounded-full border border-border bg-background px-3 py-0.5 shadow-sm">
-              <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-wide text-foreground">
-                Daily departures both ways
+    <section aria-label="Choose your route" className="mt-4">
+      <div className="grid grid-cols-2 gap-2.5">
+        {routes.map((route) => (
+          <Link
+            key={route.href}
+            to={route.href}
+            className="group flex min-h-20 items-center justify-between gap-2 rounded-lg border border-border bg-card px-3 py-3 shadow-[var(--shadow-card)] transition hover:border-primary/50 hover:bg-accent/40"
+          >
+            <span className="min-w-0">
+              <span className="block text-[10px] font-semibold uppercase text-muted-foreground">Route</span>
+              <span className="mt-1 flex items-center gap-1 font-display text-sm font-bold sm:text-base">
+                <span className="truncate">{route.from}</span>
+                <ArrowRight className="h-3.5 w-3.5 shrink-0 text-primary" />
+                <span className="truncate">{route.to}</span>
               </span>
-            </div>
-
-            {/* Nairobi → Isiolo flow */}
-            <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-muted">
-              <span className="flow-dot flow-west absolute top-0 h-full w-5 rounded-full bg-muted-foreground/60" />
-              <span className="flow-dot flow-west absolute top-0 h-full w-4 rounded-full bg-muted-foreground/40 [animation-delay:-1.2s]" />
-              <span className="flow-dot flow-west absolute top-0 h-full w-3 rounded-full bg-muted-foreground/25 [animation-delay:-2.4s]" />
-              <svg
-                className="absolute left-1 top-1/2 h-3 w-3 -translate-y-1/2 text-muted-foreground"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </div>
-          </div>
-
-          <div className="flex flex-col text-right">
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-              To
             </span>
-            <span className="font-display text-xl font-bold sm:text-2xl">Nairobi</span>
-          </div>
+            <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        ))}
+      </div>
+
+      <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+        <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/40 px-3 py-2.5">
+          <Sun className="h-4 w-4 shrink-0 text-primary" />
+          <span className="min-w-0"><span className="block text-xs font-semibold">Morning</span><span className="block text-[11px] text-muted-foreground">6:00 – 10:00 AM</span></span>
         </div>
-
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <div className="flex flex-col items-center rounded-2xl border border-border bg-background p-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-primary">
-              <Sun className="h-4 w-4" />
-            </div>
-            <span className="mt-1.5 text-[10px] font-semibold uppercase text-muted-foreground">
-              Morning
-            </span>
-            <span className="text-xs font-bold">6:00 – 10:00 AM</span>
-          </div>
-          <div className="flex flex-col items-center rounded-2xl border border-border bg-background p-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-primary">
-              <Moon className="h-4 w-4" />
-            </div>
-            <span className="mt-1.5 text-[10px] font-semibold uppercase text-muted-foreground">
-              Evening
-            </span>
-            <span className="text-xs font-bold">2:00 – 6:00 PM</span>
-          </div>
+        <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/40 px-3 py-2.5">
+          <Moon className="h-4 w-4 shrink-0 text-primary" />
+          <span className="min-w-0"><span className="block text-xs font-semibold">Evening</span><span className="block text-[11px] text-muted-foreground">2:00 – 6:00 PM</span></span>
         </div>
       </div>
 
-      <figure className="mx-auto mt-4 max-w-2xl overflow-hidden rounded-2xl border border-border bg-muted shadow-[var(--shadow-card)]">
+      <figure className="mt-3 overflow-hidden rounded-lg border border-border bg-muted">
         <img
           src={roadVehicles.url}
           alt="NorthGo passenger vehicles stopped along the Isiolo–Nairobi road"
@@ -91,7 +49,7 @@ export function RouteFlow() {
           height={1713}
           loading="eager"
           decoding="async"
-          className="aspect-[4/3] w-full object-cover object-center sm:aspect-[16/7]"
+          className="aspect-[16/7] w-full object-cover object-center"
         />
       </figure>
     </section>

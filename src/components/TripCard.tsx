@@ -12,7 +12,6 @@ import {
   Plug,
   Snowflake,
   Sofa,
-  Star,
   Timer,
   Usb,
   Users,
@@ -44,8 +43,6 @@ type Trip = {
   driver_name: string;
   driver_phone: string;
   plate_number?: string | null;
-  rating_avg?: number | null;
-  rating_count?: number | null;
   notes?: string | null;
 };
 
@@ -166,19 +163,8 @@ export function TripCard({ trip }: { trip: Trip }) {
 
         {/* driver strip */}
         <div className="mt-4 rounded-xl border border-border bg-muted/30 p-3">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="min-w-0 text-xs text-muted-foreground">
-              Driver · <span className="font-semibold text-foreground">{trip.driver_name}</span>
-            </div>
-            {(trip.rating_count ?? 0) > 0 ? (
-              <div className="flex shrink-0 items-center gap-1 text-xs">
-                <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
-                <span className="font-semibold text-foreground">{Number(trip.rating_avg ?? 0).toFixed(1)}</span>
-                <span className="text-muted-foreground">({trip.rating_count})</span>
-              </div>
-            ) : (
-              <span className="text-xs text-muted-foreground">New driver</span>
-            )}
+          <div className="min-w-0 text-xs text-muted-foreground">
+            Driver · <span className="font-semibold text-foreground">{trip.driver_name}</span>
           </div>
           <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
             <IdCard className="h-3.5 w-3.5" />

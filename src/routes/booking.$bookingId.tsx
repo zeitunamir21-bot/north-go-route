@@ -1,15 +1,12 @@
 import { SITE_URL } from "@/lib/site";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { CheckCircle2, Phone, MessageCircle, MapPin, Clock, Loader2, Share2, Gift, Copy } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { DriverPhoto } from "@/components/DriverPhoto";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { StarRating } from "@/components/StarRating";
 import { formatDateTime, formatKES } from "@/lib/format";
 import { toast } from "sonner";
 
@@ -207,16 +204,6 @@ function ConfirmationPage() {
           bookingId={booking.id}
         />
 
-        {driver && (
-          <RateDriverCard
-            driverId={driver.id}
-            driverName={driver.full_name}
-            tripId={trip.id}
-            bookingId={booking.id}
-            customerName={booking.customer_name}
-          />
-        )}
-
         <div className="mt-8 text-center">
           <Button asChild variant="ghost">
             <Link to="/">Back to home</Link>
@@ -224,111 +211,6 @@ function ConfirmationPage() {
         </div>
       </div>
       <Footer />
-    </div>
-  );
-}
-
-function RateDriverCard({
-  driverId,
-  driverName,
-  tripId,
-  bookingId,
-  customerName,
-}: {
-  driverId: string;
-  driverName: string;
-  tripId: string;
-  bookingId: string;
-  customerName: string;
-}) {
-  const [stars, setStars] = useState(0);
-  const [comment, setComment] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-
-  const { data: ratings = [], refetch } = useQuery({
-    queryKey: ["ratings", driverId],
-    queryFn: async () => {
-      const { data, error } = await supabase.rpc("get_driver_ratings_public", {
-        p_driver_id: driverId,
-      });
-      if (error) throw error;
-      return (data ?? []) as Array<{
-        id: string;
-        stars: number;
-        comment: string | null;
-        created_at: string;
-        customer_name: string;
-      }>;
-    },
-  });
-
-  const avg = ratings.length
-    ? ratings.reduce((s, r) => s + r.stars, 0) / ratings.length
-    : 0;
-
-  async function submit() {
-    if (stars < 1) return toast.error("Please select 1 to 5 stars");
-    setSubmitting(true);
-    const { error } = await supabase.rpc("submit_rating", {
-      p_booking_id: bookingId,
-      p_driver_id: driverId,
-      p_trip_id: tripId,
-      p_stars: stars,
-      p_comment: comment.trim(),
-      p_customer_name: customerName,
-    });
-    setSubmitting(false);
-    if (error) return toast.error(error.message);
-    toast.success("Thanks for your feedback!");
-    setStars(0);
-    setComment("");
-    refetch();
-  }
-
-  return (
-    <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <h3 className="font-display text-lg font-bold">Rate {driverName}</h3>
-          <p className="text-xs text-muted-foreground">Help other passengers travel with confidence.</p>
-        </div>
-        {ratings.length > 0 && (
-          <div className="text-right">
-            <div className="flex items-center gap-1.5">
-              <StarRating value={avg} readOnly size={16} />
-              <span className="text-sm font-semibold">{avg.toFixed(1)}</span>
-            </div>
-            <div className="text-xs text-muted-foreground">{ratings.length} review{ratings.length > 1 ? "s" : ""}</div>
-          </div>
-        )}
-      </div>
-      <div className="mt-4 space-y-3">
-        <StarRating value={stars} onChange={setStars} size={28} />
-        <Textarea
-          placeholder="Optional: tell us how the trip went…"
-          value={comment}
-          onChange={(e) => setComment(e.target.value.slice(0, 500))}
-          maxLength={500}
-          rows={3}
-        />
-        <Button onClick={submit} disabled={submitting || stars < 1} className="rounded-xl">
-          {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          Submit rating
-        </Button>
-      </div>
-      {ratings.length > 0 && (
-        <div className="mt-6 space-y-3 border-t border-border pt-4">
-          {ratings.slice(0, 5).map((r) => (
-            <div key={r.id} className="rounded-xl bg-muted/40 p-3">
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold">{r.customer_name}</div>
-                <StarRating value={r.stars} readOnly size={14} />
-              </div>
-              {r.comment && <p className="mt-1 text-sm text-muted-foreground">{r.comment}</p>}
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

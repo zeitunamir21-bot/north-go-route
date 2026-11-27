@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { SeatPicker } from "@/components/SeatPicker";
-import { StarRating } from "@/components/StarRating";
 import { toast } from "sonner";
 import { appStore, haptic, passengerStore } from "@/lib/native";
 import type { RecentBooking } from "@/lib/recent-bookings";
@@ -26,14 +25,6 @@ type TripDriverProfile = {
     plate_number: string | null;
     photos: string[];
   };
-  rating: { avg: number; count: number };
-  reviews: Array<{
-    id: string;
-    customer_name: string;
-    stars: number;
-    comment: string | null;
-    created_at: string;
-  }>;
 };
 
 export const Route = createFileRoute("/book/$tripId")({
@@ -329,19 +320,6 @@ function BookPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="font-semibold">{driverProfile.driver.full_name}</div>
-                      {driverProfile.rating.count > 0 ? (
-                        <div className="mt-1 flex items-center gap-1.5">
-                          <StarRating value={driverProfile.rating.avg} readOnly size={14} />
-                          <span className="text-xs font-semibold">
-                            {driverProfile.rating.avg.toFixed(1)}
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            ({driverProfile.rating.count})
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="mt-1 text-xs text-muted-foreground">No reviews yet</div>
-                      )}
                       <div className="mt-2 flex flex-wrap gap-1.5">
                         <Badge variant="outline" className="gap-1 text-xs">
                           <Car className="h-3 w-3" /> {driverProfile.driver.vehicle_name}
@@ -354,23 +332,6 @@ function BookPage() {
                       </div>
                     </div>
                   </div>
-                  {driverProfile.reviews.length > 0 && (
-                    <div className="mt-4 space-y-2 border-t border-border pt-4">
-                      {driverProfile.reviews.slice(0, 2).map((r) => (
-                        <div key={r.id} className="rounded-lg bg-muted/40 p-3">
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-semibold">{r.customer_name}</span>
-                            <StarRating value={r.stars} readOnly size={12} />
-                          </div>
-                          {r.comment && (
-                            <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
-                              "{r.comment}"
-                            </p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
               )}
 
